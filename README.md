@@ -11,12 +11,22 @@ A POC that bridges unstructured biller notes and objective operational BI to sur
 
 ## Pipeline
 
+A claim is rarely stuck for one reason. Many accounts go through a *cascade* of
+denials over time — COB resolves and Auth surfaces, Auth peer-to-peer needs
+clinical records, the resulting delays push the claim past the filing window.
+The pipeline captures that journey, not just the latest blocker.
+
 | Phase | Script | Output |
 | --- | --- | --- |
-| 1. Synthetic PMS extract | `src/generate_pms_data.py` | `data/synthetic_pms_extract.csv` |
-| 2. LLM root-cause synthesis | `src/claude_processor.py` | `data/categorized_output.csv` |
+| 1. Synthetic PMS extract (multi-note, with realistic denial cascades) | `src/generate_pms_data.py` | `data/synthetic_pms_extract.csv` (~270 rows for 150 accounts) |
+| 2. LLM per-account synthesis (terminal cause + denial journey) | `src/claude_processor.py` | `data/categorized_output.csv` (one row per account) |
 | 3. Touch / balance / waste transform | `src/data_transformer.py` | in-memory dataframe |
 | 4. Streamlit dashboard | `app.py` | http://localhost:8501 |
+
+For each account the LLM returns:
+- `LLM_Terminal_Root_Cause` - the current blocker (most recent note's category)
+- `LLM_Denial_Journey` - distinct causes the claim cycled through, in order
+- `LLM_Journey_Length` - count of distinct causes (higher = deeper rework)
 
 ## Setup
 
