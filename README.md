@@ -6,7 +6,7 @@ A POC that bridges unstructured biller notes and objective operational BI to sur
 ## Stack
 - Python 3.10+
 - Pandas, Faker
-- Anthropic SDK (`claude-3-haiku-20240307`)
+- Anthropic SDK (`claude-haiku-4-5` — original POC spec named `claude-3-haiku-20240307`, which was retired Apr 19, 2026)
 - Streamlit + Plotly
 
 ## Pipeline

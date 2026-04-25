@@ -2,8 +2,9 @@
 Phase 2 - Claude-3-Haiku root-cause synthesis.
 
 Reads data/synthetic_pms_extract.csv, sends each Notes value to the Anthropic
-Messages API (claude-3-haiku-20240307) with a strict, few-shot XML system
-prompt, and writes the result back as an LLM_Root_Cause column in
+Messages API (claude-haiku-4-5; replaces the retired claude-3-haiku-20240307
+named in the original POC spec) with a strict, few-shot XML system prompt,
+and writes the result back as an LLM_Root_Cause column in
 data/categorized_output.csv.
 
 The model is locked down with max_tokens=10 and temperature=0.0 and is required
@@ -31,7 +32,7 @@ ROOT = Path(__file__).resolve().parent.parent
 INPUT_PATH = ROOT / "data" / "synthetic_pms_extract.csv"
 OUTPUT_PATH = ROOT / "data" / "categorized_output.csv"
 
-MODEL = "claude-3-haiku-20240307"
+MODEL = "claude-haiku-4-5"
 MAX_TOKENS = 10
 TEMPERATURE = 0.0
 
