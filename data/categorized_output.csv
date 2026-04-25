@@ -1,0 +1,270 @@
+Account Number,Payor Name,Primary DX,First Touch Date,Last Touch Date,Total Notes,Latest Status,Latest Sub-status,Latest User,Next Followup Date,Notes,LLM_Terminal_Root_Cause,LLM_Denial_Journey,LLM_Journey_Length
+ACC1006810,Aetna,M54.5,2025-12-26,2026-01-12,2,Follow-up,Sent to Provider,steven73,2026-01-28,"[2025-12-26] Aetna EOB shows denl - auth required prior to svc M54.5. retro auth rqst submitted, awaiting determ
+[2026-01-12] while working auth, pt mentioned different primary ins - need to update COB w/ Aetna for M54.5",MISSING_AUTH,"MISSING_AUTH,COB_ISSUE",2
+ACC1054447,BCBS,M54.5,2026-03-17,2026-03-17,1,Denied,Need Info,teresa28,2026-03-21,"[2026-03-17] BCBS req medical records for DOS 11/17 M54.5 - faxed rqst to clinic, awaiting recd",CLINICAL_REQUIRED,CLINICAL_REQUIRED,1
+ACC1129686,UHC,M54.5,2026-02-01,2026-03-24,3,Follow-up,Need Info,charles06,2026-04-09,"[2026-02-01] UHC bounced clm - says pt has other primary ins. need updated COB from pt, called pt LVM
+[2026-02-17] after pt updated other ins, UHC now wants auth for M54.5 - none was obtained, requesting retro
+[2026-03-24] after lengthy clinical review, UHC now denying as TFL exceeded - drafting appeal w/ POTF for M54.5",TIMELY_FILING,"COB_ISSUE,MISSING_AUTH,TIMELY_FILING",3
+ACC1162230,UHC,E11.9,2025-11-18,2025-12-07,2,Follow-up,Need Info,davenportbrandi,2025-12-18,"[2025-11-18] called UHC re DOS 11/25 - rep says no auth on file for E11.9, denl CO-197. need retro auth, sent rqst to prov ofc
+[2025-12-07] peer to peer w/ UHC req clinical justification for E11.9 - chasing prov for chart notes",CLINICAL_REQUIRED,"MISSING_AUTH,CLINICAL_REQUIRED",2
+ACC1170307,Medicaid,J45.909,2026-02-05,2026-03-10,2,Pending,Awaiting Payor,hannahbrewer,2026-03-14,"[2026-02-05] Medicaid rep states COB outdated, last update 2yrs ago. pt has new MCR primary now. J45.909 svc on hold
+[2026-03-10] after COB updated to new primary Medicaid, found prov not credentialed on this panel. cred coord notified J45.909",CREDENTIALING_ERROR,"COB_ISSUE,CREDENTIALING_ERROR",2
+ACC1264762,BCBS,E11.9,2025-11-30,2025-12-23,2,Open,Sent to Provider,alvarezkimberly,2026-01-04,"[2025-11-30] BCBS rep states COB outdated, last update 2yrs ago. pt has new MCR primary now. E11.9 svc on hold
+[2025-12-23] cred file fixed, claim reprocessed - now denl for missing auth on E11.9. submitting retro auth rqst",MISSING_AUTH,"COB_ISSUE,MISSING_AUTH",2
+ACC1327691,Medicare Primary,J45.909,2026-03-25,2026-04-26,2,Follow-up,Sent to Provider,acastaneda,2026-05-13,"[2026-03-25] spoke to Medicare Primary, no precert obtained for DOS 12/24 J45.909. attempting peer to peer review
+[2026-04-26] during cred review, found pt switched ins last yr. Medicare Primary now secondary. need fresh COB J45.909",MISSING_AUTH,"MISSING_AUTH,COB_ISSUE",2
+ACC1433940,Aetna,E11.9,2025-11-14,2025-11-23,2,Denied,Worked,keyemily,2025-12-13,"[2025-11-14] spoke to Aetna, no precert obtained for DOS 2/16 E11.9. attempting peer to peer review
+[2025-11-23] TFL appeal needs supporting documentation - faxed records request to provider for E11.9",CLINICAL_REQUIRED,"MISSING_AUTH,CLINICAL_REQUIRED",2
+ACC1440466,Medicaid,J45.909,2026-02-23,2026-04-16,3,Follow-up,Awaiting Payor,vjones,2026-05-02,"[2026-02-23] Medicaid rep says rendering prov not par on DOS, need to check w/ cred team. J45.909 svc held
+[2026-03-19] while working auth, pt mentioned different primary ins - need to update COB w/ Medicaid for J45.909
+[2026-04-16] cred file fixed, claim reprocessed - now denl for missing auth on J45.909. submitting retro auth rqst",MISSING_AUTH,"CREDENTIALING_ERROR,COB_ISSUE,MISSING_AUTH",3
+ACC1514340,BCBS,E11.9,2025-11-14,2025-11-14,1,Pending,Reviewed,nicholaschavez,2025-12-02,"[2025-11-14] BCBS bounced clm - says pt has other primary ins. need updated COB from pt, called pt LVM",COB_ISSUE,COB_ISSUE,1
+ACC1520596,UHC,J45.909,2025-12-15,2025-12-15,1,Pending,Need Info,maryhowell,2025-12-24,"[2025-12-15] UHC rejected as TFL exceeded. orig submission was electronic, pulling 277CA for proof",TIMELY_FILING,TIMELY_FILING,1
+ACC1624315,Aetna,J45.909,2025-12-26,2026-01-25,2,Follow-up,Need Info,paulwatson,2026-02-09,"[2025-12-26] Aetna denl - prov NPI not effective on DOS. cred dept says enrollment still pending J45.909
+[2026-01-25] cred fix took 90d - Aetna now denying claim as TFL. building appeal w/ acceptance report J45.909",TIMELY_FILING,"CREDENTIALING_ERROR,TIMELY_FILING",2
+ACC1661401,Medicare Primary,J45.909,2025-12-26,2026-01-05,2,Denied,Sent to Provider,christopherphillips,2026-01-18,"[2025-12-26] Medicare Primary rejected as TFL exceeded. orig submission was electronic, pulling 277CA for proof
+[2026-01-05] after auth retro denied, Medicare Primary now requesting full clinical pkg for J45.909 appeal",CLINICAL_REQUIRED,"TIMELY_FILING,CLINICAL_REQUIRED",2
+ACC1674975,BCBS,M54.5,2026-03-25,2026-05-02,3,Open,Sent to Provider,ecosta,2026-05-10,"[2026-03-25] denl - BCBS needs COB info refreshed, suspended pending other ins verif. f/u 5d M54.5
+[2026-04-22] after pt updated other ins, BCBS now wants auth for M54.5 - none was obtained, requesting retro
+[2026-05-02] after auth retro denied, BCBS now requesting full clinical pkg for M54.5 appeal",CLINICAL_REQUIRED,"COB_ISSUE,MISSING_AUTH,CLINICAL_REQUIRED",3
+ACC1744682,Medicaid,I10,2026-03-14,2026-06-22,4,Denied,Escalated,elizabeth56,2026-07-10,"[2026-03-14] Medicaid rep says rendering prov not par on DOS, need to check w/ cred team. I10 svc held
+[2026-04-16] Medicaid rep notes other ins on file - need pt to update before re-adjudication of I10 clm
+[2026-05-20] Medicaid - prior COB now resolved but auth window expired during delay. re-attempting retro auth I10
+[2026-06-22] appeal in progress - Medicaid TFL denial I10, have clearinghouse acceptance from DOS+12d",TIMELY_FILING,"CREDENTIALING_ERROR,COB_ISSUE,MISSING_AUTH,TIMELY_FILING",4
+ACC1822825,UHC,I10,2026-02-22,2026-03-23,2,Denied,Sent to Provider,catherinegomez,2026-04-11,"[2026-02-22] denl - UHC needs COB info refreshed, suspended pending other ins verif. f/u 5d I10
+[2026-03-23] after pt updated other ins, UHC now wants auth for I10 - none was obtained, requesting retro",MISSING_AUTH,"COB_ISSUE,MISSING_AUTH",2
+ACC1842524,BCBS,M54.5,2026-02-13,2026-02-13,1,Appeal,Awaiting Payor,samanthamartinez,2026-03-05,"[2026-02-13] called BCBS re DOS 11/22 - rep says no auth on file for M54.5, denl CO-197. need retro auth, sent rqst to prov ofc",MISSING_AUTH,MISSING_AUTH,1
+ACC1843636,Medicare Primary,M54.5,2025-12-17,2026-01-15,2,Pending,Reviewed,kathleen64,2026-02-05,"[2025-12-17] Medicare Primary rep states COB outdated, last update 2yrs ago. pt has new MCR primary now. M54.5 svc on hold
+[2026-01-15] after pt updated other ins, Medicare Primary now wants auth for M54.5 - none was obtained, requesting retro",MISSING_AUTH,"COB_ISSUE,MISSING_AUTH",2
+ACC1865901,BCBS,M54.5,2025-12-06,2026-01-23,3,Denied,Awaiting Payor,jennifercollins,2026-02-07,"[2025-12-06] called BCBS re DOS 3/12 - rep says no auth on file for M54.5, denl CO-197. need retro auth, sent rqst to prov ofc
+[2025-12-25] auth obtained but cred check shows prov terming on BCBS panel - escalated to cred dept M54.5
+[2026-01-23] cred fix took 90d - BCBS now denying claim as TFL. building appeal w/ acceptance report M54.5",TIMELY_FILING,"MISSING_AUTH,CREDENTIALING_ERROR,TIMELY_FILING",3
+ACC1882629,Medicaid,E11.9,2025-11-27,2025-12-09,2,Pending,Worked,scott67,2025-12-17,"[2025-11-27] Medicaid denl CO-29 timely filing exceeded for DOS 11/12 E11.9. checking proof of timely submission
+[2025-12-09] after auth retro denied, Medicaid now requesting full clinical pkg for E11.9 appeal",CLINICAL_REQUIRED,"TIMELY_FILING,CLINICAL_REQUIRED",2
+ACC1899411,Medicare Primary,E11.9,2025-11-26,2025-11-26,1,Pending,Worked,lisaavery,2025-12-04,"[2025-11-26] TFL denl from Medicare Primary, orig clm sent in window but no record on payor side. resubmit w/ POTF",TIMELY_FILING,TIMELY_FILING,1
+ACC1909393,BCBS,J45.909,2025-12-03,2025-12-03,1,Follow-up,Reviewed,cindy77,2025-12-19,"[2025-12-03] BCBS addl info req - operative report and progress notes for J45.909. submitted, no resp",CLINICAL_REQUIRED,CLINICAL_REQUIRED,1
+ACC1987737,Aetna,M54.5,2025-12-11,2025-12-11,1,Denied,Sent to Provider,whiteheadmichele,2025-12-21,"[2025-12-11] Aetna bounced clm - says pt has other primary ins. need updated COB from pt, called pt LVM",COB_ISSUE,COB_ISSUE,1
+ACC2016911,Medicaid,E11.9,2026-01-14,2026-02-17,2,Follow-up,Need Info,amandataylor,2026-02-21,"[2026-01-14] denl - Medicaid needs COB info refreshed, suspended pending other ins verif. f/u 5d E11.9
+[2026-02-17] cred file fixed, claim reprocessed - now denl for missing auth on E11.9. submitting retro auth rqst",MISSING_AUTH,"COB_ISSUE,MISSING_AUTH",2
+ACC2022698,Medicaid,E11.9,2026-03-22,2026-04-06,2,Open,Awaiting Payor,brianromero,2026-04-26,"[2026-03-22] Medicaid bounced clm - says pt has other primary ins. need updated COB from pt, called pt LVM
+[2026-04-06] after COB updated to new primary Medicaid, found prov not credentialed on this panel. cred coord notified E11.9",CREDENTIALING_ERROR,"COB_ISSUE,CREDENTIALING_ERROR",2
+ACC2096280,Medicare Primary,E11.9,2026-01-13,2026-01-13,1,Pending,Reviewed,ojones,2026-01-30,"[2026-01-13] Medicare Primary rejected as TFL exceeded. orig submission was electronic, pulling 277CA for proof",TIMELY_FILING,TIMELY_FILING,1
+ACC2149597,BCBS,I10,2026-02-20,2026-03-14,2,Denied,Awaiting Payor,bethwilliams,2026-03-19,"[2026-02-20] spoke to BCBS, no precert obtained for DOS 11/20 I10. attempting peer to peer review
+[2026-03-14] BCBS rep notes other ins on file - need pt to update before re-adjudication of I10 clm",MISSING_AUTH,"MISSING_AUTH,COB_ISSUE",2
+ACC2154126,Aetna,E11.9,2025-12-14,2025-12-14,1,Appeal,Escalated,justin78,2025-12-21,[2025-12-14] Aetna denl CO-29 timely filing exceeded for DOS 3/13 E11.9. checking proof of timely submission,TIMELY_FILING,TIMELY_FILING,1
+ACC2156902,UHC,E11.9,2026-02-03,2026-02-03,1,Denied,Awaiting Payor,alexander67,2026-02-13,[2026-02-03] UHC denl CO-29 timely filing exceeded for DOS 11/17 E11.9. checking proof of timely submission,TIMELY_FILING,TIMELY_FILING,1
+ACC2221854,Medicare Primary,J45.909,2026-01-24,2026-03-17,3,Appeal,Need Info,staffordmichelle,2026-04-03,"[2026-01-24] Medicare Primary EOB shows denl - auth required prior to svc J45.909. retro auth rqst submitted, awaiting determ
+[2026-02-18] after COB updated to new primary Medicare Primary, found prov not credentialed on this panel. cred coord notified J45.909
+[2026-03-17] after lengthy clinical review, Medicare Primary now denying as TFL exceeded - drafting appeal w/ POTF for J45.909",TIMELY_FILING,"MISSING_AUTH,CREDENTIALING_ERROR,TIMELY_FILING",3
+ACC2255409,BCBS,M54.5,2026-01-27,2026-02-22,2,Appeal,Reviewed,ofinley,2026-02-26,"[2026-01-27] BCBS EOB shows denl - auth required prior to svc M54.5. retro auth rqst submitted, awaiting determ
+[2026-02-22] BCBS rep notes other ins on file - need pt to update before re-adjudication of M54.5 clm",MISSING_AUTH,"MISSING_AUTH,COB_ISSUE",2
+ACC2259379,BCBS,I10,2025-11-27,2026-01-06,3,Denied,Escalated,ojones,2026-01-26,"[2025-11-27] BCBS clm rejection - taxonomy/NPI mismatch, cred file out of date. fix in PM and rebill I10
+[2025-12-19] during cred review, found pt switched ins last yr. BCBS now secondary. need fresh COB I10
+[2026-01-06] after pt updated other ins, BCBS now wants auth for I10 - none was obtained, requesting retro",MISSING_AUTH,"CREDENTIALING_ERROR,COB_ISSUE,MISSING_AUTH",3
+ACC2355439,Medicare Primary,M54.5,2025-12-29,2026-02-15,3,Open,Sent to Provider,bwagner,2026-03-04,"[2025-12-29] denl - Medicare Primary needs COB info refreshed, suspended pending other ins verif. f/u 5d M54.5
+[2026-01-25] Medicare Primary - prior COB now resolved but auth window expired during delay. re-attempting retro auth M54.5
+[2026-02-15] appeal in progress - Medicare Primary TFL denial M54.5, have clearinghouse acceptance from DOS+12d",TIMELY_FILING,"COB_ISSUE,MISSING_AUTH,TIMELY_FILING",3
+ACC2408404,Aetna,E11.9,2026-03-01,2026-03-01,1,Appeal,Escalated,dtaylor,2026-03-11,"[2026-03-01] Aetna clm rejection - taxonomy/NPI mismatch, cred file out of date. fix in PM and rebill E11.9",CREDENTIALING_ERROR,CREDENTIALING_ERROR,1
+ACC2432176,Aetna,I10,2025-11-15,2025-12-17,2,Denied,Worked,angelawillis,2025-12-22,"[2025-11-15] Aetna bounced clm - says pt has other primary ins. need updated COB from pt, called pt LVM
+[2025-12-17] Aetna reprocessing held - cred file out of sync w/ NPI registry. fixing taxonomy I10",COB_ISSUE,"COB_ISSUE,CREDENTIALING_ERROR",2
+ACC2437026,Aetna,J45.909,2026-03-19,2026-03-19,1,Follow-up,Escalated,wcabrera,2026-03-29,"[2026-03-19] spoke to Aetna, no precert obtained for DOS 2/8 J45.909. attempting peer to peer review",MISSING_AUTH,MISSING_AUTH,1
+ACC2595275,UHC,E11.9,2025-12-27,2026-01-28,2,Open,Sent to Provider,gloriawells,2026-02-18,"[2025-12-27] denl - UHC needs COB info refreshed, suspended pending other ins verif. f/u 5d E11.9
+[2026-01-28] UHC reprocessing held - cred file out of sync w/ NPI registry. fixing taxonomy E11.9",CREDENTIALING_ERROR,"COB_ISSUE,CREDENTIALING_ERROR",2
+ACC2642635,Aetna,E11.9,2025-11-06,2025-11-21,2,Pending,Worked,gabrieltucker,2025-12-04,"[2025-11-06] Aetna rep says rendering prov not par on DOS, need to check w/ cred team. E11.9 svc held
+[2025-11-21] after lengthy clinical review, Aetna now denying as TFL exceeded - drafting appeal w/ POTF for E11.9",TIMELY_FILING,"CREDENTIALING_ERROR,TIMELY_FILING",2
+ACC2677407,Medicare Primary,J45.909,2025-11-11,2025-11-11,1,Open,Reviewed,williamanderson,2025-11-20,"[2025-11-11] Medicare Primary addl info req - operative report and progress notes for J45.909. submitted, no resp",CLINICAL_REQUIRED,CLINICAL_REQUIRED,1
+ACC2686231,Aetna,E11.9,2026-01-22,2026-03-04,3,Pending,Escalated,hthomas,2026-03-13,"[2026-01-22] Aetna addl info req - operative report and progress notes for E11.9. submitted, no resp
+[2026-02-18] cred fix took 90d - Aetna now denying claim as TFL. building appeal w/ acceptance report E11.9
+[2026-03-04] peer to peer w/ Aetna req clinical justification for E11.9 - chasing prov for chart notes",CLINICAL_REQUIRED,"CLINICAL_REQUIRED,TIMELY_FILING,CLINICAL_REQUIRED",3
+ACC2724590,BCBS,E11.9,2026-01-04,2026-01-23,2,Denied,Escalated,michellecherry,2026-01-30,"[2026-01-04] BCBS EOB shows denl - auth required prior to svc E11.9. retro auth rqst submitted, awaiting determ
+[2026-01-23] peer to peer w/ BCBS req clinical justification for E11.9 - chasing prov for chart notes",CLINICAL_REQUIRED,"MISSING_AUTH,CLINICAL_REQUIRED",2
+ACC2738129,Medicaid,E11.9,2026-02-17,2026-04-20,3,Follow-up,Need Info,audrey68,2026-05-03,"[2026-02-17] Medicaid clm rejection - taxonomy/NPI mismatch, cred file out of date. fix in PM and rebill E11.9
+[2026-03-17] Medicaid rep notes other ins on file - need pt to update before re-adjudication of E11.9 clm
+[2026-04-20] Medicaid - prior COB now resolved but auth window expired during delay. re-attempting retro auth E11.9",MISSING_AUTH,"CREDENTIALING_ERROR,COB_ISSUE,MISSING_AUTH",3
+ACC2829622,BCBS,J45.909,2026-01-23,2026-01-23,1,Open,Escalated,soniawilliams,2026-01-29,"[2026-01-23] denl - BCBS needs COB info refreshed, suspended pending other ins verif. f/u 5d J45.909",COB_ISSUE,COB_ISSUE,1
+ACC2839607,UHC,I10,2025-11-26,2026-01-17,3,Pending,Escalated,tasha01,2026-01-23,"[2025-11-26] UHC denl - prov NPI not effective on DOS. cred dept says enrollment still pending I10
+[2025-12-17] UHC rep notes other ins on file - need pt to update before re-adjudication of I10 clm
+[2026-01-17] cred file fixed, claim reprocessed - now denl for missing auth on I10. submitting retro auth rqst",MISSING_AUTH,"CREDENTIALING_ERROR,COB_ISSUE,MISSING_AUTH",3
+ACC2867825,UHC,E11.9,2025-11-01,2025-12-01,2,Follow-up,Awaiting Payor,garzaanthony,2025-12-22,"[2025-11-01] UHC addl info req - operative report and progress notes for E11.9. submitted, no resp
+[2025-12-01] cred fix took 90d - UHC now denying claim as TFL. building appeal w/ acceptance report E11.9",TIMELY_FILING,"CLINICAL_REQUIRED,TIMELY_FILING",2
+ACC2913049,BCBS,J45.909,2026-02-08,2026-02-08,1,Pending,Sent to Provider,rebeccabailey,2026-02-25,"[2026-02-08] called BCBS re DOS 3/18 - rep says no auth on file for J45.909, denl CO-197. need retro auth, sent rqst to prov ofc",MISSING_AUTH,MISSING_AUTH,1
+ACC2919549,BCBS,I10,2026-03-04,2026-03-25,2,Open,Awaiting Payor,maria66,2026-04-08,"[2026-03-04] BCBS EOB shows denl - auth required prior to svc I10. retro auth rqst submitted, awaiting determ
+[2026-03-25] TFL appeal needs supporting documentation - faxed records request to provider for I10",CLINICAL_REQUIRED,"MISSING_AUTH,CLINICAL_REQUIRED",2
+ACC2921542,Aetna,I10,2025-11-28,2025-11-28,1,Pending,Reviewed,daniel04,2025-12-02,[2025-11-28] Aetna denl CO-29 timely filing exceeded for DOS 2/16 I10. checking proof of timely submission,TIMELY_FILING,TIMELY_FILING,1
+ACC2944841,Medicaid,J45.909,2026-01-14,2026-01-14,1,Appeal,Reviewed,sandovalamy,2026-01-17,[2026-01-14] denl from Medicaid - clinical docs needed to support J45.909 dx. ordered chart notes from prov,CLINICAL_REQUIRED,CLINICAL_REQUIRED,1
+ACC3030966,Aetna,E11.9,2026-02-14,2026-02-14,1,Open,Awaiting Payor,reedross,2026-03-01,"[2026-02-14] Aetna rep says rendering prov not par on DOS, need to check w/ cred team. E11.9 svc held",CREDENTIALING_ERROR,CREDENTIALING_ERROR,1
+ACC3109911,Aetna,E11.9,2025-11-21,2025-11-21,1,Pending,Awaiting Payor,karroyo,2025-11-25,"[2025-11-21] Aetna EOB shows denl - auth required prior to svc E11.9. retro auth rqst submitted, awaiting determ",MISSING_AUTH,MISSING_AUTH,1
+ACC3117636,Medicare Primary,I10,2026-01-27,2026-03-01,2,Pending,Reviewed,katie29,2026-03-11,"[2026-01-27] Medicare Primary denl CO-29 timely filing exceeded for DOS 3/12 I10. checking proof of timely submission
+[2026-03-01] TFL appeal needs supporting documentation - faxed records request to provider for I10",TIMELY_FILING,"TIMELY_FILING,CLINICAL_REQUIRED",2
+ACC3472189,Aetna,M54.5,2025-11-01,2025-11-01,1,Appeal,Awaiting Payor,sanchezthomas,2025-11-16,"[2025-11-01] Aetna rep says rendering prov not par on DOS, need to check w/ cred team. M54.5 svc held",CREDENTIALING_ERROR,CREDENTIALING_ERROR,1
+ACC3475548,Medicaid,I10,2026-02-20,2026-02-20,1,Appeal,Awaiting Payor,ramireztracey,2026-03-09,"[2026-02-20] called Medicaid re DOS 11/22 - rep says no auth on file for I10, denl CO-197. need retro auth, sent rqst to prov ofc",MISSING_AUTH,MISSING_AUTH,1
+ACC3530518,Aetna,E11.9,2025-12-11,2025-12-29,2,Follow-up,Sent to Provider,perrymark,2026-01-12,"[2025-12-11] called Aetna re DOS 12/8 - rep says no auth on file for E11.9, denl CO-197. need retro auth, sent rqst to prov ofc
+[2025-12-29] peer to peer w/ Aetna req clinical justification for E11.9 - chasing prov for chart notes",CLINICAL_REQUIRED,"MISSING_AUTH,CLINICAL_REQUIRED",2
+ACC3650391,Medicaid,I10,2025-11-11,2025-11-11,1,Open,Need Info,llandry,2025-11-27,"[2025-11-11] Medicaid addl info req - operative report and progress notes for I10. submitted, no resp",CLINICAL_REQUIRED,CLINICAL_REQUIRED,1
+ACC3670226,Aetna,M54.5,2026-03-21,2026-04-02,2,Follow-up,Escalated,katie87,2026-04-08,"[2026-03-21] Aetna rep states COB outdated, last update 2yrs ago. pt has new MCR primary now. M54.5 svc on hold
+[2026-04-02] after COB updated to new primary Aetna, found prov not credentialed on this panel. cred coord notified M54.5",CREDENTIALING_ERROR,"COB_ISSUE,CREDENTIALING_ERROR",2
+ACC3678638,Medicare Primary,I10,2026-03-12,2026-03-12,1,Denied,Awaiting Payor,jpeterson,2026-03-17,"[2026-03-12] Medicare Primary rep states COB outdated, last update 2yrs ago. pt has new MCR primary now. I10 svc on hold",COB_ISSUE,COB_ISSUE,1
+ACC3970445,Medicare Primary,M54.5,2026-01-16,2026-02-09,2,Open,Reviewed,vpham,2026-02-21,"[2026-01-16] denl from Medicare Primary - clinical docs needed to support M54.5 dx. ordered chart notes from prov
+[2026-02-09] after lengthy clinical review, Medicare Primary now denying as TFL exceeded - drafting appeal w/ POTF for M54.5",TIMELY_FILING,"CLINICAL_REQUIRED,TIMELY_FILING",2
+ACC4020853,Medicaid,J45.909,2025-11-30,2025-12-07,2,Denied,Need Info,tyleraguilar,2025-12-14,"[2025-11-30] Medicaid rejected as TFL exceeded. orig submission was electronic, pulling 277CA for proof
+[2025-12-07] after auth retro denied, Medicaid now requesting full clinical pkg for J45.909 appeal",CLINICAL_REQUIRED,"TIMELY_FILING,CLINICAL_REQUIRED",2
+ACC4189885,Medicare Primary,M54.5,2026-02-25,2026-02-25,1,Follow-up,Worked,erica21,2026-03-06,"[2026-02-25] Medicare Primary EOB shows denl - auth required prior to svc M54.5. retro auth rqst submitted, awaiting determ",MISSING_AUTH,MISSING_AUTH,1
+ACC4318855,Medicare Primary,I10,2026-01-18,2026-02-27,3,Appeal,Sent to Provider,scott74,2026-03-06,"[2026-01-18] Medicare Primary EOB shows denl - auth required prior to svc I10. retro auth rqst submitted, awaiting determ
+[2026-01-26] Medicare Primary reprocessing held - cred file out of sync w/ NPI registry. fixing taxonomy I10
+[2026-02-27] cred fix took 90d - Medicare Primary now denying claim as TFL. building appeal w/ acceptance report I10",TIMELY_FILING,"MISSING_AUTH,CREDENTIALING_ERROR,TIMELY_FILING",3
+ACC4374754,Medicaid,M54.5,2026-03-15,2026-03-15,1,Appeal,Need Info,raymond57,2026-03-21,[2026-03-15] Medicaid denl - prov NPI not effective on DOS. cred dept says enrollment still pending M54.5,CREDENTIALING_ERROR,CREDENTIALING_ERROR,1
+ACC4533779,Aetna,M54.5,2026-03-16,2026-03-16,1,Pending,Awaiting Payor,james48,2026-03-25,"[2026-03-16] Aetna rep states COB outdated, last update 2yrs ago. pt has new MCR primary now. M54.5 svc on hold",COB_ISSUE,COB_ISSUE,1
+ACC4558780,UHC,J45.909,2026-01-04,2026-01-04,1,Appeal,Awaiting Payor,matthew94,2026-01-14,[2026-01-04] denl from UHC - clinical docs needed to support J45.909 dx. ordered chart notes from prov,CLINICAL_REQUIRED,CLINICAL_REQUIRED,1
+ACC4668136,UHC,E11.9,2025-12-12,2025-12-12,1,Follow-up,Escalated,hoffmanjennifer,2025-12-15,"[2025-12-12] denl - UHC needs COB info refreshed, suspended pending other ins verif. f/u 5d E11.9",COB_ISSUE,COB_ISSUE,1
+ACC4684531,UHC,J45.909,2026-03-09,2026-04-27,3,Follow-up,Escalated,robinbradley,2026-05-08,"[2026-03-09] UHC rep states COB outdated, last update 2yrs ago. pt has new MCR primary now. J45.909 svc on hold
+[2026-04-13] UHC - prior COB now resolved but auth window expired during delay. re-attempting retro auth J45.909
+[2026-04-27] appeal in progress - UHC TFL denial J45.909, have clearinghouse acceptance from DOS+12d",TIMELY_FILING,"COB_ISSUE,MISSING_AUTH,TIMELY_FILING",3
+ACC4700025,Medicaid,I10,2026-01-30,2026-01-30,1,Open,Reviewed,joshuatucker,2026-02-16,"[2026-01-30] Medicaid bounced clm - says pt has other primary ins. need updated COB from pt, called pt LVM",COB_ISSUE,COB_ISSUE,1
+ACC4918527,Medicare Primary,I10,2026-01-15,2026-01-15,1,Appeal,Awaiting Payor,floresthomas,2026-02-04,"[2026-01-15] Medicare Primary rep states COB outdated, last update 2yrs ago. pt has new MCR primary now. I10 svc on hold",COB_ISSUE,COB_ISSUE,1
+ACC5013879,BCBS,E11.9,2025-12-20,2026-01-18,2,Pending,Awaiting Payor,matthew81,2026-02-08,"[2025-12-20] BCBS EOB shows denl - auth required prior to svc E11.9. retro auth rqst submitted, awaiting determ
+[2026-01-18] after auth retro denied, BCBS now requesting full clinical pkg for E11.9 appeal",CLINICAL_REQUIRED,"MISSING_AUTH,CLINICAL_REQUIRED",2
+ACC5163555,Medicare Primary,I10,2025-12-18,2025-12-30,2,Open,Reviewed,dwalker,2026-01-18,"[2025-12-18] Medicare Primary clm rejection - taxonomy/NPI mismatch, cred file out of date. fix in PM and rebill I10
+[2025-12-30] appeal in progress - Medicare Primary TFL denial I10, have clearinghouse acceptance from DOS+12d",TIMELY_FILING,"CREDENTIALING_ERROR,TIMELY_FILING",2
+ACC5163953,Medicaid,E11.9,2025-11-20,2025-12-17,2,Pending,Sent to Provider,kimberlyjames,2025-12-29,"[2025-11-20] Medicaid bounced clm - says pt has other primary ins. need updated COB from pt, called pt LVM
+[2025-12-17] cred file fixed, claim reprocessed - now denl for missing auth on E11.9. submitting retro auth rqst",MISSING_AUTH,"COB_ISSUE,MISSING_AUTH",2
+ACC5205279,BCBS,M54.5,2025-11-30,2025-12-07,2,Denied,Need Info,kristy39,2025-12-24,"[2025-11-30] BCBS EOB shows denl - auth required prior to svc M54.5. retro auth rqst submitted, awaiting determ
+[2025-12-07] BCBS rep notes other ins on file - need pt to update before re-adjudication of M54.5 clm",MISSING_AUTH,"MISSING_AUTH,COB_ISSUE",2
+ACC5213115,BCBS,I10,2025-11-06,2026-01-08,3,Denied,Need Info,joycearnold,2026-01-29,"[2025-11-06] BCBS rep says rendering prov not par on DOS, need to check w/ cred team. I10 svc held
+[2025-12-04] while working auth, pt mentioned different primary ins - need to update COB w/ BCBS for I10
+[2026-01-08] after pt updated other ins, BCBS now wants auth for I10 - none was obtained, requesting retro",MISSING_AUTH,"CREDENTIALING_ERROR,COB_ISSUE,MISSING_AUTH",3
+ACC5456272,Medicare Primary,M54.5,2026-01-12,2026-01-20,2,Denied,Escalated,smithchristine,2026-02-09,"[2026-01-12] denl - Medicare Primary needs COB info refreshed, suspended pending other ins verif. f/u 5d M54.5
+[2026-01-20] Medicare Primary - prior COB now resolved but auth window expired during delay. re-attempting retro auth M54.5",MISSING_AUTH,"COB_ISSUE,MISSING_AUTH",2
+ACC5476583,BCBS,J45.909,2026-03-26,2026-03-26,1,Follow-up,Escalated,daniel62,2026-03-29,"[2026-03-26] denl - BCBS needs COB info refreshed, suspended pending other ins verif. f/u 5d J45.909",COB_ISSUE,COB_ISSUE,1
+ACC5479144,Aetna,J45.909,2026-03-13,2026-03-27,2,Open,Reviewed,frankgray,2026-04-11,"[2026-03-13] called Aetna re DOS 3/18 - rep says no auth on file for J45.909, denl CO-197. need retro auth, sent rqst to prov ofc
+[2026-03-27] TFL appeal needs supporting documentation - faxed records request to provider for J45.909",CLINICAL_REQUIRED,"MISSING_AUTH,CLINICAL_REQUIRED",2
+ACC5482413,Medicaid,I10,2025-10-28,2025-12-18,3,Appeal,Escalated,jreed,2026-01-01,"[2025-10-28] Medicaid denl - prov NPI not effective on DOS. cred dept says enrollment still pending I10
+[2025-11-18] Medicaid rep notes other ins on file - need pt to update before re-adjudication of I10 clm
+[2025-12-18] Medicaid - prior COB now resolved but auth window expired during delay. re-attempting retro auth I10",MISSING_AUTH,"CREDENTIALING_ERROR,COB_ISSUE,MISSING_AUTH",3
+ACC5602180,Medicare Primary,I10,2025-11-05,2025-11-22,2,Denied,Reviewed,agarcia,2025-11-28,"[2025-11-05] Medicare Primary denl - prov NPI not effective on DOS. cred dept says enrollment still pending I10
+[2025-11-22] cred fix took 90d - Medicare Primary now denying claim as TFL. building appeal w/ acceptance report I10",TIMELY_FILING,"CREDENTIALING_ERROR,TIMELY_FILING",2
+ACC5663623,BCBS,I10,2026-01-24,2026-01-24,1,Open,Escalated,francisco53,2026-02-01,"[2026-01-24] BCBS addl info req - operative report and progress notes for I10. submitted, no resp",CLINICAL_REQUIRED,CLINICAL_REQUIRED,1
+ACC5673212,UHC,J45.909,2026-01-25,2026-01-25,1,Pending,Sent to Provider,nancyjones,2026-01-31,"[2026-01-25] spoke to UHC, no precert obtained for DOS 4/2 J45.909. attempting peer to peer review",MISSING_AUTH,MISSING_AUTH,1
+ACC5674183,UHC,E11.9,2025-11-10,2025-11-10,1,Follow-up,Awaiting Payor,michael86,2025-11-27,"[2025-11-10] UHC rep says rendering prov not par on DOS, need to check w/ cred team. E11.9 svc held",CREDENTIALING_ERROR,CREDENTIALING_ERROR,1
+ACC5770422,Medicaid,E11.9,2026-01-27,2026-02-19,2,Denied,Escalated,shelley71,2026-03-09,"[2026-01-27] Medicaid bounced clm - says pt has other primary ins. need updated COB from pt, called pt LVM
+[2026-02-19] Medicaid reprocessing held - cred file out of sync w/ NPI registry. fixing taxonomy E11.9",CREDENTIALING_ERROR,"COB_ISSUE,CREDENTIALING_ERROR",2
+ACC5960271,Aetna,I10,2026-02-12,2026-03-01,2,Follow-up,Awaiting Payor,christinaturner,2026-03-08,"[2026-02-12] Aetna EOB shows denl - auth required prior to svc I10. retro auth rqst submitted, awaiting determ
+[2026-03-01] while working auth, pt mentioned different primary ins - need to update COB w/ Aetna for I10",MISSING_AUTH,"MISSING_AUTH,COB_ISSUE",2
+ACC5988757,BCBS,M54.5,2026-02-19,2026-04-14,3,Pending,Awaiting Payor,donna23,2026-04-25,"[2026-02-19] BCBS req medical records for DOS 11/8 M54.5 - faxed rqst to clinic, awaiting recd
+[2026-03-10] appeal in progress - BCBS TFL denial M54.5, have clearinghouse acceptance from DOS+12d
+[2026-04-14] TFL appeal needs supporting documentation - faxed records request to provider for M54.5",TIMELY_FILING,"CLINICAL_REQUIRED,TIMELY_FILING",2
+ACC6007072,Medicaid,E11.9,2026-03-01,2026-03-01,1,Open,Escalated,ericfarmer,2026-03-08,[2026-03-01] Medicaid denl - prov NPI not effective on DOS. cred dept says enrollment still pending E11.9,CREDENTIALING_ERROR,CREDENTIALING_ERROR,1
+ACC6075395,Aetna,J45.909,2026-02-23,2026-04-06,3,Appeal,Awaiting Payor,newtoneric,2026-04-24,"[2026-02-23] Aetna rep states COB outdated, last update 2yrs ago. pt has new MCR primary now. J45.909 svc on hold
+[2026-03-27] cred file fixed, claim reprocessed - now denl for missing auth on J45.909. submitting retro auth rqst
+[2026-04-06] peer to peer w/ Aetna req clinical justification for J45.909 - chasing prov for chart notes",CLINICAL_REQUIRED,"COB_ISSUE,CREDENTIALING_ERROR,MISSING_AUTH,CLINICAL_REQUIRED",4
+ACC6120253,Medicaid,I10,2025-12-11,2025-12-11,1,Denied,Need Info,andrewlee,2025-12-20,"[2025-12-11] Medicaid bounced clm - says pt has other primary ins. need updated COB from pt, called pt LVM",COB_ISSUE,COB_ISSUE,1
+ACC6159230,Aetna,I10,2025-12-13,2025-12-13,1,Appeal,Escalated,allenashley,2025-12-30,"[2025-12-13] Aetna req medical records for DOS 11/12 I10 - faxed rqst to clinic, awaiting recd",CLINICAL_REQUIRED,CLINICAL_REQUIRED,1
+ACC6262632,Aetna,M54.5,2026-01-20,2026-01-20,1,Open,Sent to Provider,cruzbarbara,2026-01-27,"[2026-01-20] Aetna rep states COB outdated, last update 2yrs ago. pt has new MCR primary now. M54.5 svc on hold",COB_ISSUE,COB_ISSUE,1
+ACC6279418,Medicaid,M54.5,2025-12-08,2026-01-26,3,Pending,Worked,julie69,2026-02-11,"[2025-12-08] Medicaid addl info req - operative report and progress notes for M54.5. submitted, no resp
+[2025-12-30] after lengthy clinical review, Medicaid now denying as TFL exceeded - drafting appeal w/ POTF for M54.5
+[2026-01-26] after auth retro denied, Medicaid now requesting full clinical pkg for M54.5 appeal",CLINICAL_REQUIRED,"CLINICAL_REQUIRED,TIMELY_FILING,CLINICAL_REQUIRED",3
+ACC6503032,Medicaid,E11.9,2026-02-23,2026-03-24,2,Denied,Reviewed,debra12,2026-04-07,"[2026-02-23] Medicaid EOB shows denl - auth required prior to svc E11.9. retro auth rqst submitted, awaiting determ
+[2026-03-24] while working auth, pt mentioned different primary ins - need to update COB w/ Medicaid for E11.9",MISSING_AUTH,"MISSING_AUTH,COB_ISSUE",2
+ACC6530541,Aetna,E11.9,2026-03-07,2026-03-07,1,Appeal,Escalated,jenkinsmorgan,2026-03-26,"[2026-03-07] Aetna clm rejection - taxonomy/NPI mismatch, cred file out of date. fix in PM and rebill E11.9",CREDENTIALING_ERROR,CREDENTIALING_ERROR,1
+ACC6623525,UHC,I10,2025-11-15,2025-11-15,1,Appeal,Escalated,emilywalker,2025-12-05,"[2025-11-15] UHC clm rejection - taxonomy/NPI mismatch, cred file out of date. fix in PM and rebill I10",CREDENTIALING_ERROR,CREDENTIALING_ERROR,1
+ACC6639317,Medicare Primary,M54.5,2026-03-06,2026-03-06,1,Denied,Need Info,dramsey,2026-03-24,[2026-03-06] Medicare Primary denl - prov NPI not effective on DOS. cred dept says enrollment still pending M54.5,CREDENTIALING_ERROR,CREDENTIALING_ERROR,1
+ACC6647119,UHC,I10,2025-11-16,2025-12-29,3,Follow-up,Reviewed,smiller,2026-01-19,"[2025-11-16] denl - UHC needs COB info refreshed, suspended pending other ins verif. f/u 5d I10
+[2025-11-26] after pt updated other ins, UHC now wants auth for I10 - none was obtained, requesting retro
+[2025-12-29] after lengthy clinical review, UHC now denying as TFL exceeded - drafting appeal w/ POTF for I10",TIMELY_FILING,"COB_ISSUE,MISSING_AUTH,TIMELY_FILING",3
+ACC7017548,Medicare Primary,E11.9,2025-11-08,2025-11-08,1,Appeal,Escalated,hhill,2025-11-20,[2025-11-08] Medicare Primary denl CO-29 timely filing exceeded for DOS 4/10 E11.9. checking proof of timely submission,TIMELY_FILING,TIMELY_FILING,1
+ACC7022335,Medicaid,I10,2026-02-16,2026-03-16,2,Open,Sent to Provider,khill,2026-04-02,"[2026-02-16] Medicaid rep states COB outdated, last update 2yrs ago. pt has new MCR primary now. I10 svc on hold
+[2026-03-16] Medicaid - prior COB now resolved but auth window expired during delay. re-attempting retro auth I10",MISSING_AUTH,"COB_ISSUE,MISSING_AUTH",2
+ACC7067228,UHC,E11.9,2026-02-17,2026-03-08,2,Denied,Sent to Provider,tracie31,2026-03-22,"[2026-02-17] UHC denl CO-29 timely filing exceeded for DOS 12/11 E11.9. checking proof of timely submission
+[2026-03-08] peer to peer w/ UHC req clinical justification for E11.9 - chasing prov for chart notes",CLINICAL_REQUIRED,"TIMELY_FILING,CLINICAL_REQUIRED",2
+ACC7070880,BCBS,J45.909,2025-11-14,2025-11-14,1,Appeal,Worked,prichard,2025-11-21,"[2025-11-14] BCBS addl info req - operative report and progress notes for J45.909. submitted, no resp",CLINICAL_REQUIRED,CLINICAL_REQUIRED,1
+ACC7073292,UHC,M54.5,2025-12-09,2025-12-09,1,Follow-up,Reviewed,williamdavis,2025-12-29,[2025-12-09] UHC denl - prov NPI not effective on DOS. cred dept says enrollment still pending M54.5,CREDENTIALING_ERROR,CREDENTIALING_ERROR,1
+ACC7208460,Aetna,J45.909,2025-12-27,2025-12-27,1,Open,Escalated,kimberly99,2026-01-16,"[2025-12-27] Aetna addl info req - operative report and progress notes for J45.909. submitted, no resp",CLINICAL_REQUIRED,CLINICAL_REQUIRED,1
+ACC7296605,Medicaid,I10,2026-01-13,2026-01-29,2,Appeal,Sent to Provider,curtisbarton,2026-02-15,"[2026-01-13] Medicaid addl info req - operative report and progress notes for I10. submitted, no resp
+[2026-01-29] cred fix took 90d - Medicaid now denying claim as TFL. building appeal w/ acceptance report I10",TIMELY_FILING,"CLINICAL_REQUIRED,TIMELY_FILING",2
+ACC7328534,Medicare Primary,E11.9,2026-01-24,2026-01-24,1,Appeal,Reviewed,molly39,2026-02-04,"[2026-01-24] spoke to Medicare Primary, no precert obtained for DOS 1/10 E11.9. attempting peer to peer review",MISSING_AUTH,MISSING_AUTH,1
+ACC7358385,Medicaid,E11.9,2026-01-01,2026-01-01,1,Appeal,Worked,snydermark,2026-01-19,"[2026-01-01] Medicaid rep says rendering prov not par on DOS, need to check w/ cred team. E11.9 svc held",CREDENTIALING_ERROR,CREDENTIALING_ERROR,1
+ACC7395997,Medicaid,J45.909,2026-01-10,2026-01-30,2,Open,Need Info,molly71,2026-02-03,"[2026-01-10] spoke to Medicaid, no precert obtained for DOS 2/2 J45.909. attempting peer to peer review
+[2026-01-30] while working auth, pt mentioned different primary ins - need to update COB w/ Medicaid for J45.909",MISSING_AUTH,"MISSING_AUTH,COB_ISSUE",2
+ACC7667458,Medicare Primary,E11.9,2026-02-13,2026-04-21,4,Denied,Escalated,thomasharvey,2026-05-01,"[2026-02-13] spoke to Medicare Primary, no precert obtained for DOS 12/18 E11.9. attempting peer to peer review
+[2026-03-08] peer to peer w/ Medicare Primary req clinical justification for E11.9 - chasing prov for chart notes
+[2026-04-11] auth obtained but cred check shows prov terming on Medicare Primary panel - escalated to cred dept E11.9
+[2026-04-21] cred fix took 90d - Medicare Primary now denying claim as TFL. building appeal w/ acceptance report E11.9",TIMELY_FILING,"MISSING_AUTH,CLINICAL_REQUIRED,CREDENTIALING_ERROR,TIMELY_FILING",4
+ACC7718433,Medicare Primary,M54.5,2026-02-06,2026-03-02,2,Follow-up,Escalated,masonjackson,2026-03-18,"[2026-02-06] Medicare Primary bounced clm - says pt has other primary ins. need updated COB from pt, called pt LVM
+[2026-03-02] Medicare Primary - prior COB now resolved but auth window expired during delay. re-attempting retro auth M54.5",MISSING_AUTH,"COB_ISSUE,MISSING_AUTH",2
+ACC7728339,BCBS,M54.5,2025-11-08,2025-11-08,1,Appeal,Reviewed,nicholasgalloway,2025-11-13,"[2025-11-08] BCBS req medical records for DOS 12/18 M54.5 - faxed rqst to clinic, awaiting recd",CLINICAL_REQUIRED,CLINICAL_REQUIRED,1
+ACC7752972,UHC,J45.909,2025-12-19,2026-01-11,2,Appeal,Awaiting Payor,mnavarro,2026-01-18,"[2025-12-19] UHC bounced clm - says pt has other primary ins. need updated COB from pt, called pt LVM
+[2026-01-11] auth obtained but cred check shows prov terming on UHC panel - escalated to cred dept J45.909",CREDENTIALING_ERROR,"COB_ISSUE,CREDENTIALING_ERROR",2
+ACC7844947,UHC,E11.9,2025-11-15,2026-01-12,3,Pending,Worked,william46,2026-01-18,"[2025-11-15] UHC req medical records for DOS 1/25 E11.9 - faxed rqst to clinic, awaiting recd
+[2025-12-12] appeal in progress - UHC TFL denial E11.9, have clearinghouse acceptance from DOS+12d
+[2026-01-12] after auth retro denied, UHC now requesting full clinical pkg for E11.9 appeal",CLINICAL_REQUIRED,"CLINICAL_REQUIRED,TIMELY_FILING,CLINICAL_REQUIRED",3
+ACC7850944,BCBS,E11.9,2025-12-31,2025-12-31,1,Denied,Reviewed,elizabeth25,2026-01-14,"[2025-12-31] BCBS EOB shows denl - auth required prior to svc E11.9. retro auth rqst submitted, awaiting determ",MISSING_AUTH,MISSING_AUTH,1
+ACC7970985,BCBS,I10,2025-12-01,2026-01-20,4,Open,Sent to Provider,taylortammy,2026-02-03,"[2025-12-01] called BCBS re DOS 1/7 - rep says no auth on file for I10, denl CO-197. need retro auth, sent rqst to prov ofc
+[2025-12-10] peer to peer w/ BCBS req clinical justification for I10 - chasing prov for chart notes
+[2026-01-03] BCBS reprocessing held - cred file out of sync w/ NPI registry. fixing taxonomy I10
+[2026-01-20] appeal in progress - BCBS TFL denial I10, have clearinghouse acceptance from DOS+12d",TIMELY_FILING,"MISSING_AUTH,CLINICAL_REQUIRED,CREDENTIALING_ERROR,TIMELY_FILING",4
+ACC7975534,Medicaid,I10,2025-11-09,2025-11-09,1,Appeal,Awaiting Payor,marissaprice,2025-11-25,"[2025-11-09] Medicaid rep says rendering prov not par on DOS, need to check w/ cred team. I10 svc held",CREDENTIALING_ERROR,CREDENTIALING_ERROR,1
+ACC8031780,Medicare Primary,I10,2026-02-19,2026-02-19,1,Denied,Escalated,nicolepena,2026-02-24,"[2026-02-19] Medicare Primary req medical records for DOS 4/7 I10 - faxed rqst to clinic, awaiting recd",CLINICAL_REQUIRED,CLINICAL_REQUIRED,1
+ACC8033426,Medicare Primary,I10,2026-03-04,2026-03-04,1,Pending,Worked,sarah35,2026-03-15,"[2026-03-04] Medicare Primary req medical records for DOS 12/13 I10 - faxed rqst to clinic, awaiting recd",CLINICAL_REQUIRED,CLINICAL_REQUIRED,1
+ACC8038374,Aetna,M54.5,2025-12-09,2025-12-09,1,Denied,Awaiting Payor,zlawrence,2025-12-17,"[2025-12-09] Aetna rejected as TFL exceeded. orig submission was electronic, pulling 277CA for proof",TIMELY_FILING,TIMELY_FILING,1
+ACC8072684,Medicare Primary,I10,2025-12-15,2026-01-05,2,Denied,Reviewed,jeffrey10,2026-01-16,"[2025-12-15] spoke to Medicare Primary, no precert obtained for DOS 11/7 I10. attempting peer to peer review
+[2026-01-05] while working auth, pt mentioned different primary ins - need to update COB w/ Medicare Primary for I10",MISSING_AUTH,"MISSING_AUTH,COB_ISSUE",2
+ACC8095702,Aetna,I10,2026-03-17,2026-03-17,1,Appeal,Sent to Provider,schmittcaroline,2026-03-30,"[2026-03-17] Aetna addl info req - operative report and progress notes for I10. submitted, no resp",CLINICAL_REQUIRED,CLINICAL_REQUIRED,1
+ACC8118722,UHC,E11.9,2026-03-11,2026-04-01,2,Follow-up,Need Info,yrodriguez,2026-04-05,"[2026-03-11] UHC denl CO-29 timely filing exceeded for DOS 1/10 E11.9. checking proof of timely submission
+[2026-04-01] after auth retro denied, UHC now requesting full clinical pkg for E11.9 appeal",CLINICAL_REQUIRED,"TIMELY_FILING,CLINICAL_REQUIRED",2
+ACC8132769,UHC,I10,2025-12-09,2025-12-09,1,Appeal,Reviewed,lindadominguez,2025-12-22,"[2025-12-09] UHC rep states COB outdated, last update 2yrs ago. pt has new MCR primary now. I10 svc on hold",COB_ISSUE,COB_ISSUE,1
+ACC8210624,Medicare Primary,E11.9,2025-11-21,2025-12-11,2,Open,Worked,nolanjason,2025-12-24,"[2025-11-21] TFL denl from Medicare Primary, orig clm sent in window but no record on payor side. resubmit w/ POTF
+[2025-12-11] after auth retro denied, Medicare Primary now requesting full clinical pkg for E11.9 appeal",CLINICAL_REQUIRED,"TIMELY_FILING,CLINICAL_REQUIRED",2
+ACC8273315,Medicaid,M54.5,2026-01-06,2026-01-27,2,Appeal,Reviewed,christina87,2026-02-17,"[2026-01-06] TFL denl from Medicaid, orig clm sent in window but no record on payor side. resubmit w/ POTF
+[2026-01-27] TFL appeal needs supporting documentation - faxed records request to provider for M54.5",CLINICAL_REQUIRED,"TIMELY_FILING,CLINICAL_REQUIRED",2
+ACC8307727,BCBS,E11.9,2026-03-18,2026-04-15,2,Open,Need Info,dsanchez,2026-04-25,"[2026-03-18] BCBS EOB shows denl - auth required prior to svc E11.9. retro auth rqst submitted, awaiting determ
+[2026-04-15] while working auth, pt mentioned different primary ins - need to update COB w/ BCBS for E11.9",MISSING_AUTH,"MISSING_AUTH,COB_ISSUE",2
+ACC8416270,Medicare Primary,E11.9,2026-01-16,2026-02-17,2,Appeal,Need Info,rrodriguez,2026-03-09,"[2026-01-16] spoke to Medicare Primary, no precert obtained for DOS 1/3 E11.9. attempting peer to peer review
+[2026-02-17] while working auth, pt mentioned different primary ins - need to update COB w/ Medicare Primary for E11.9",MISSING_AUTH,"MISSING_AUTH,COB_ISSUE",2
+ACC8519121,BCBS,I10,2025-10-31,2025-11-23,2,Follow-up,Sent to Provider,elizabeth57,2025-12-10,"[2025-10-31] BCBS rep says rendering prov not par on DOS, need to check w/ cred team. I10 svc held
+[2025-11-23] after lengthy clinical review, BCBS now denying as TFL exceeded - drafting appeal w/ POTF for I10",TIMELY_FILING,"CREDENTIALING_ERROR,TIMELY_FILING",2
+ACC8574680,Medicare Primary,I10,2025-11-20,2025-12-09,2,Denied,Awaiting Payor,briannasmith,2025-12-19,"[2025-11-20] Medicare Primary denl - prov NPI not effective on DOS. cred dept says enrollment still pending I10
+[2025-12-09] after lengthy clinical review, Medicare Primary now denying as TFL exceeded - drafting appeal w/ POTF for I10",TIMELY_FILING,"CREDENTIALING_ERROR,TIMELY_FILING",2
+ACC8628891,Aetna,M54.5,2025-11-14,2026-01-05,4,Appeal,Escalated,lisahall,2026-01-15,"[2025-11-14] Aetna bounced clm - says pt has other primary ins. need updated COB from pt, called pt LVM
+[2025-12-15] after pt updated other ins, Aetna now wants auth for M54.5 - none was obtained, requesting retro
+[2025-12-25] peer to peer w/ Aetna req clinical justification for M54.5 - chasing prov for chart notes
+[2026-01-05] appeal in progress - Aetna TFL denial M54.5, have clearinghouse acceptance from DOS+12d",TIMELY_FILING,"COB_ISSUE,MISSING_AUTH,CLINICAL_REQUIRED,TIMELY_FILING",4
+ACC8633773,Medicare Primary,E11.9,2025-12-22,2025-12-22,1,Follow-up,Reviewed,uhorton,2025-12-29,"[2025-12-22] Medicare Primary rep states COB outdated, last update 2yrs ago. pt has new MCR primary now. E11.9 svc on hold",COB_ISSUE,COB_ISSUE,1
+ACC8665981,BCBS,M54.5,2025-10-30,2025-10-30,1,Follow-up,Need Info,robertpena,2025-11-14,"[2025-10-30] BCBS rep states COB outdated, last update 2yrs ago. pt has new MCR primary now. M54.5 svc on hold",COB_ISSUE,COB_ISSUE,1
+ACC8713396,Aetna,M54.5,2025-11-12,2025-12-14,3,Open,Reviewed,george97,2025-12-20,"[2025-11-12] denl - Aetna needs COB info refreshed, suspended pending other ins verif. f/u 5d M54.5
+[2025-11-30] after pt updated other ins, Aetna now wants auth for M54.5 - none was obtained, requesting retro
+[2025-12-14] after auth retro denied, Aetna now requesting full clinical pkg for M54.5 appeal",CLINICAL_REQUIRED,"COB_ISSUE,MISSING_AUTH,CLINICAL_REQUIRED",3
+ACC8736811,BCBS,J45.909,2026-02-28,2026-02-28,1,Pending,Awaiting Payor,steve07,2026-03-14,"[2026-02-28] called BCBS re DOS 12/22 - rep says no auth on file for J45.909, denl CO-197. need retro auth, sent rqst to prov ofc",MISSING_AUTH,MISSING_AUTH,1
+ACC8795419,BCBS,J45.909,2026-03-06,2026-04-08,2,Open,Escalated,jrivas,2026-04-15,"[2026-03-06] BCBS denl CO-29 timely filing exceeded for DOS 4/4 J45.909. checking proof of timely submission
+[2026-04-08] peer to peer w/ BCBS req clinical justification for J45.909 - chasing prov for chart notes",CLINICAL_REQUIRED,"TIMELY_FILING,CLINICAL_REQUIRED",2
+ACC8835373,Medicare Primary,M54.5,2026-03-18,2026-03-18,1,Pending,Awaiting Payor,nuneztracey,2026-04-08,"[2026-03-18] Medicare Primary addl info req - operative report and progress notes for M54.5. submitted, no resp",CLINICAL_REQUIRED,CLINICAL_REQUIRED,1
+ACC8930103,Medicare Primary,M54.5,2025-12-14,2025-12-21,2,Appeal,Reviewed,hopkinsmichael,2026-01-07,"[2025-12-14] TFL denl from Medicare Primary, orig clm sent in window but no record on payor side. resubmit w/ POTF
+[2025-12-21] TFL appeal needs supporting documentation - faxed records request to provider for M54.5",TIMELY_FILING,"TIMELY_FILING,CLINICAL_REQUIRED",2
+ACC8938746,Aetna,M54.5,2026-03-19,2026-03-19,1,Open,Escalated,donnacampbell,2026-04-03,"[2026-03-19] TFL denl from Aetna, orig clm sent in window but no record on payor side. resubmit w/ POTF",TIMELY_FILING,TIMELY_FILING,1
+ACC9094999,UHC,I10,2026-01-27,2026-02-25,3,Pending,Escalated,ymorgan,2026-03-11,"[2026-01-27] UHC bounced clm - says pt has other primary ins. need updated COB from pt, called pt LVM
+[2026-02-12] UHC - prior COB now resolved but auth window expired during delay. re-attempting retro auth I10
+[2026-02-25] after auth retro denied, UHC now requesting full clinical pkg for I10 appeal",CLINICAL_REQUIRED,"COB_ISSUE,MISSING_AUTH,CLINICAL_REQUIRED",3
+ACC9164342,BCBS,M54.5,2026-02-07,2026-03-20,3,Pending,Need Info,kathrynroberts,2026-03-27,"[2026-02-07] BCBS EOB shows denl - auth required prior to svc M54.5. retro auth rqst submitted, awaiting determ
+[2026-02-28] BCBS reprocessing held - cred file out of sync w/ NPI registry. fixing taxonomy M54.5
+[2026-03-20] cred fix took 90d - BCBS now denying claim as TFL. building appeal w/ acceptance report M54.5",TIMELY_FILING,"MISSING_AUTH,CREDENTIALING_ERROR,TIMELY_FILING",3
+ACC9164991,UHC,J45.909,2025-11-27,2025-11-27,1,Appeal,Escalated,kennethnovak,2025-12-09,"[2025-11-27] denl - UHC needs COB info refreshed, suspended pending other ins verif. f/u 5d J45.909",COB_ISSUE,COB_ISSUE,1
+ACC9186400,BCBS,J45.909,2026-02-10,2026-03-17,2,Denied,Awaiting Payor,wendy16,2026-04-01,"[2026-02-10] BCBS addl info req - operative report and progress notes for J45.909. submitted, no resp
+[2026-03-17] cred fix took 90d - BCBS now denying claim as TFL. building appeal w/ acceptance report J45.909",TIMELY_FILING,"CLINICAL_REQUIRED,TIMELY_FILING",2
+ACC9209880,Aetna,J45.909,2026-02-24,2026-03-31,3,Pending,Escalated,pollardmichael,2026-04-06,"[2026-02-24] denl - Aetna needs COB info refreshed, suspended pending other ins verif. f/u 5d J45.909
+[2026-03-16] after pt updated other ins, Aetna now wants auth for J45.909 - none was obtained, requesting retro
+[2026-03-31] TFL appeal needs supporting documentation - faxed records request to provider for J45.909",CLINICAL_REQUIRED,"COB_ISSUE,MISSING_AUTH,CLINICAL_REQUIRED",3
+ACC9312590,Aetna,J45.909,2025-12-22,2026-01-17,2,Appeal,Escalated,qmiller,2026-01-27,"[2025-12-22] Aetna bounced clm - says pt has other primary ins. need updated COB from pt, called pt LVM
+[2026-01-17] auth obtained but cred check shows prov terming on Aetna panel - escalated to cred dept J45.909",CREDENTIALING_ERROR,"COB_ISSUE,CREDENTIALING_ERROR",2
+ACC9626108,Medicare Primary,E11.9,2025-12-13,2025-12-13,1,Open,Awaiting Payor,elizabeth38,2025-12-23,[2025-12-13] Medicare Primary denl CO-29 timely filing exceeded for DOS 11/22 E11.9. checking proof of timely submission,TIMELY_FILING,TIMELY_FILING,1
+ACC9748499,Medicaid,J45.909,2025-12-25,2026-01-30,3,Pending,Worked,henryrenee,2026-02-04,"[2025-12-25] Medicaid denl - prov NPI not effective on DOS. cred dept says enrollment still pending J45.909
+[2026-01-04] while working auth, pt mentioned different primary ins - need to update COB w/ Medicaid for J45.909
+[2026-01-30] Medicaid - prior COB now resolved but auth window expired during delay. re-attempting retro auth J45.909",MISSING_AUTH,"CREDENTIALING_ERROR,COB_ISSUE,MISSING_AUTH",3
+ACC9852897,UHC,J45.909,2026-02-22,2026-02-22,1,Pending,Escalated,ibrandt,2026-03-01,"[2026-02-22] UHC clm rejection - taxonomy/NPI mismatch, cred file out of date. fix in PM and rebill J45.909",CREDENTIALING_ERROR,CREDENTIALING_ERROR,1
+ACC9897858,Medicare Primary,J45.909,2025-10-28,2025-10-28,1,Appeal,Need Info,tracy15,2025-11-17,"[2025-10-28] Medicare Primary rejected as TFL exceeded. orig submission was electronic, pulling 277CA for proof",TIMELY_FILING,TIMELY_FILING,1
+ACC9907391,Medicaid,E11.9,2026-01-02,2026-02-18,3,Denied,Escalated,davidlee,2026-02-22,"[2026-01-02] Medicaid denl - prov NPI not effective on DOS. cred dept says enrollment still pending E11.9
+[2026-01-16] Medicaid rep notes other ins on file - need pt to update before re-adjudication of E11.9 clm
+[2026-02-18] Medicaid - prior COB now resolved but auth window expired during delay. re-attempting retro auth E11.9",MISSING_AUTH,"CREDENTIALING_ERROR,COB_ISSUE,MISSING_AUTH",3
+ACC9961107,BCBS,I10,2025-11-02,2025-11-02,1,Denied,Escalated,qvargas,2025-11-05,"[2025-11-02] BCBS rejected as TFL exceeded. orig submission was electronic, pulling 277CA for proof",TIMELY_FILING,TIMELY_FILING,1
+ACC9990305,Medicare Primary,M54.5,2026-03-25,2026-05-14,3,Open,Need Info,harry08,2026-05-27,"[2026-03-25] called Medicare Primary re DOS 12/20 - rep says no auth on file for M54.5, denl CO-197. need retro auth, sent rqst to prov ofc
+[2026-04-16] auth obtained but cred check shows prov terming on Medicare Primary panel - escalated to cred dept M54.5
+[2026-05-14] cred fix took 90d - Medicare Primary now denying claim as TFL. building appeal w/ acceptance report M54.5",TIMELY_FILING,"MISSING_AUTH,CREDENTIALING_ERROR,TIMELY_FILING",3
+ACC9996207,Medicaid,J45.909,2025-12-31,2026-01-27,2,Open,Awaiting Payor,benjamin96,2026-02-12,"[2025-12-31] Medicaid denl - prov NPI not effective on DOS. cred dept says enrollment still pending J45.909
+[2026-01-27] after lengthy clinical review, Medicaid now denying as TFL exceeded - drafting appeal w/ POTF for J45.909",TIMELY_FILING,"CREDENTIALING_ERROR,TIMELY_FILING",2
