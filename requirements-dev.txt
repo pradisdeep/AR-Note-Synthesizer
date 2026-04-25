@@ -1,0 +1,6 @@
+# Dev/pipeline-only deps. Install with: pip install -r requirements-dev.txt
+# Includes everything in requirements.txt plus what Phases 1-2 need locally.
+-r requirements.txt
+faker>=20.0.0
+anthropic>=0.40.0
+python-dotenv>=1.0.0

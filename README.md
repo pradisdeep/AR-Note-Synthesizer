@@ -20,15 +20,25 @@ A POC that bridges unstructured biller notes and objective operational BI to sur
 
 ## Setup
 
+The dashboard (`app.py`) only needs pandas, streamlit, and plotly. The Phase 1-2
+pipeline scripts also need faker, anthropic, and python-dotenv.
+
 ```bash
+# Dashboard only (also what Streamlit Cloud installs)
 pip install -r requirements.txt
+
+# Full pipeline (regenerate synthetic data and re-run the LLM step)
+pip install -r requirements-dev.txt
 cp .env.example .env   # then add your ANTHROPIC_API_KEY
 ```
 
 ## Run
 
 ```bash
+# Dashboard against the committed data/categorized_output.csv
+streamlit run app.py
+
+# Re-run the pipeline end-to-end (requires requirements-dev.txt)
 python src/generate_pms_data.py
 python src/claude_processor.py
-streamlit run app.py
 ```
