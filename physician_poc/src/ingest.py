@@ -56,6 +56,29 @@ EVENTS_REQUIRED = [
     "transaction_date",
     "transaction_amount",
 ]
+
+
+def _parse_dates_robust(series: pd.Series) -> pd.Series:
+    """Parse a date column tolerant of mixed formats.
+
+    The production extract has at least two distinct shapes:
+      * ISO 8601 with nanosecond precision    ("2024-10-22 15:36:57.033000000")
+      * Two-digit-year %d-%b-%y               ("19-Jun-24")
+
+    Naive `pd.to_datetime(format="mixed", dayfirst=True)` mis-parses ISO
+    rows like "2025-04-09" as 4 September 2025 because it treats the
+    middle field as the day. This function tries ISO 8601 first, then
+    fills the gaps with the %d-%b-%y format.
+    """
+    s = series.astype(str)
+    parsed = pd.to_datetime(s, errors="coerce", format="ISO8601")
+    if parsed.isna().any():
+        # Fall back to the abbreviated month form for whatever is left.
+        fallback = pd.to_datetime(
+            s.where(parsed.isna()), errors="coerce", format="%d-%b-%y"
+        )
+        parsed = parsed.fillna(fallback)
+    return parsed
 NOTES_REQUIRED = [
     "accountnumber",
     "touchstartdate",
@@ -98,7 +121,7 @@ def load_events(path: Path) -> pd.DataFrame:
     if missing:
         raise ValueError(f"Events file is missing required columns: {missing}")
     df["visit"] = df["visit"].astype(str)
-    df["transaction_date"] = pd.to_datetime(df["transaction_date"], errors="coerce")
+    df["transaction_date"] = _parse_dates_robust(df["transaction_date"])
     if df["transaction_date"].isna().any():
         bad = df["transaction_date"].isna().sum()
         raise ValueError(
@@ -123,7 +146,7 @@ def load_notes(path: Path) -> pd.DataFrame:
     if missing:
         raise ValueError(f"Notes file is missing required columns: {missing}")
     df["accountnumber"] = df["accountnumber"].astype(str)
-    df["touchstartdate"] = pd.to_datetime(df["touchstartdate"], errors="coerce")
+    df["touchstartdate"] = _parse_dates_robust(df["touchstartdate"])
     if df["touchstartdate"].isna().any():
         bad = df["touchstartdate"].isna().sum()
         raise ValueError(

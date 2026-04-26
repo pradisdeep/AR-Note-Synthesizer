@@ -40,7 +40,7 @@ import pandas as pd
 _HERE = Path(__file__).resolve().parent
 if str(_HERE) not in sys.path:
     sys.path.insert(0, str(_HERE))
-from ingest import SYSTEM_PROCESSES, load_events, load_notes  # noqa: E402
+from ingest import SYSTEM_PROCESSES, _parse_dates_robust, load_events, load_notes  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -95,9 +95,10 @@ def _per_account_meta(events: pd.DataFrame) -> pd.DataFrame:
         first_event_date=("transaction_date", "min"),
         last_event_date=("transaction_date", "max"),
     )
-    meta["dos_from"] = pd.to_datetime(meta["dos_from"], errors="coerce")
-    meta["dos_to"] = pd.to_datetime(meta["dos_to"], errors="coerce")
-    meta["placement_date"] = pd.to_datetime(meta["placement_date"], errors="coerce")
+    # Production extract uses mixed date formats; see ingest._parse_dates_robust.
+    meta["dos_from"] = _parse_dates_robust(meta["dos_from"])
+    meta["dos_to"] = _parse_dates_robust(meta["dos_to"])
+    meta["placement_date"] = _parse_dates_robust(meta["placement_date"])
     meta["dos_quarter"] = meta["dos_from"].dt.to_period("Q").astype(str)
     return meta
 
