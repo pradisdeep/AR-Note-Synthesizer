@@ -8,3 +8,9 @@ venv/
 .DS_Store
 *.egg-info/
 .pytest_cache/
+
+# Physician POC: only let *_redacted.csv files be committed under physician_poc/data/.
+# Raw production extracts (notes, events) must never reach git.
+physician_poc/data/*
+!physician_poc/data/*_redacted.csv
+!physician_poc/data/.gitkeep
