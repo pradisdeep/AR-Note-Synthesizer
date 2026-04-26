@@ -1,0 +1,8 @@
+accountnumber,touchstartdate,notescurrentvalue,eventcreatedby
+SYN0000001,2024-07-05 10:53:19,"Claim billed to UMR for charges $4271.16, DOS 03/14/2024. Checked eob found paid $0 and claim still pending. Allowing time. SYN/biller1",synbiller1
+SYN0000001,2024-08-21 10:44:50,"Underpayment appeal submitted to PO BOX 30546. SYN/biller2",synbiller2
+SYN0000001,2024-09-27 15:00:00,null,PM_ResponseInterface
+SYN0000001,2024-10-22 09:15:00,The invoice is sent for print and postal service and awaiting for the response,SHSIndexXMLCreation_Interface_Hosp_PROD
+SYN0000002,2024-12-30 13:25:03,"DOS 02/02/2024 medicare claim denied as duplicate. Need rebill with corrected info. SYN/biller3",synbiller3
+SYN0000003,2024-09-04 12:15:05,"All line items denied as Registration/Eligibility - eligibility was not verified pre-submission. Will rebill once coverage confirmed. SYN/biller1",synbiller1
+ORPHAN0000099,2024-06-01 09:00:00,"Note for an account not present in the events file - tests orphan-handling.",synbiller1

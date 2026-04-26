@@ -1,0 +1,2 @@
+visit,dos_from,dos_to,placementpayor,placementpayorfsc,placementdate,first_claim_submission_date,billing_type,cpt_code,transaction_type,transaction_date,transaction_amount,denial_category1,latest_status_code
+5.072E+11,2024-03-14,2024-03-14,COMMERCIAL,COMMERCIAL,2024-06-19,2024-06-19,,,Charges,2024-06-19,4271.16,,Hcbl
