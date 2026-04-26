@@ -269,6 +269,89 @@ SYNTHETIC_EMPLOYER_FIXTURES = [
 ]
 
 
+def run_cli() -> None:
+    """File-input CLI for the redactor.
+
+    Usage:
+        python redact.py INPUT_CSV OUTPUT_CSV
+        python redact.py INPUT_CSV OUTPUT_CSV --redact-employers
+        python redact.py INPUT_CSV OUTPUT_CSV --redact-employers --employer-list employers.txt
+
+    Reads INPUT_CSV (assumes a 'notescurrentvalue' column unless --note-col
+    is passed), redacts in place, writes to OUTPUT_CSV, and prints a
+    summary. The input file is never modified.
+    """
+    import argparse
+    import sys
+    from pathlib import Path
+
+    parser = argparse.ArgumentParser(description="Redact PHI from a notes CSV.")
+    parser.add_argument("input_csv", type=Path, help="Input CSV path (raw, gitignored).")
+    parser.add_argument("output_csv", type=Path, help="Output CSV path (redacted, committable).")
+    parser.add_argument(
+        "--note-col",
+        default="notescurrentvalue",
+        help="Name of the free-text notes column (default: notescurrentvalue).",
+    )
+    parser.add_argument(
+        "--redact-employers",
+        action="store_true",
+        help="Also redact employer names. Requires --employer-list.",
+    )
+    parser.add_argument(
+        "--employer-list",
+        type=Path,
+        help="Path to a file with one employer term per line. "
+        "Required when --redact-employers is set; otherwise ignored.",
+    )
+    parser.add_argument(
+        "--selftest",
+        action="store_true",
+        help="Run the synthetic-fixture selftest instead of processing files.",
+    )
+    args = parser.parse_args()
+
+    if args.selftest:
+        selftest()
+        return
+
+    if not args.input_csv.exists():
+        print(f"ERROR: input file not found: {args.input_csv}", file=sys.stderr)
+        sys.exit(1)
+
+    employer_terms: list[str] | None = None
+    if args.redact_employers:
+        if args.employer_list is None or not args.employer_list.exists():
+            print(
+                "ERROR: --redact-employers requires --employer-list pointing to "
+                "an existing file with one employer name per line.",
+                file=sys.stderr,
+            )
+            sys.exit(2)
+        employer_terms = [
+            line.strip()
+            for line in args.employer_list.read_text().splitlines()
+            if line.strip() and not line.strip().startswith("#")
+        ]
+        print(f"Loaded {len(employer_terms)} employer term(s) from {args.employer_list}")
+
+    df = pd.read_csv(args.input_csv)
+    print(f"Loaded {len(df)} row(s) from {args.input_csv}")
+
+    redacted, stats = redact_dataframe(
+        df,
+        note_col=args.note_col,
+        redact_employers=args.redact_employers,
+        employer_terms=employer_terms,
+    )
+
+    args.output_csv.parent.mkdir(parents=True, exist_ok=True)
+    redacted.to_csv(args.output_csv, index=False)
+    print(f"Wrote redacted output to {args.output_csv}")
+    print()
+    print(stats.report())
+
+
 def selftest() -> None:
     """Run the redactor against synthetic fixtures shaped like real-data patterns."""
     print("Phase 1 - default mode (employer redaction OFF)")
@@ -301,4 +384,10 @@ def selftest() -> None:
 
 
 if __name__ == "__main__":
-    selftest()
+    import sys
+    # If invoked with no arguments, run the synthetic selftest (back-compat).
+    # Otherwise the CLI handles input/output files.
+    if len(sys.argv) == 1:
+        selftest()
+    else:
+        run_cli()
