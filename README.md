@@ -21,7 +21,7 @@ The pipeline captures that journey, not just the latest blocker.
 | 1. Synthetic PMS extract (multi-note, with realistic denial cascades) | `src/generate_pms_data.py` | `data/synthetic_pms_extract.csv` (~270 rows for 150 accounts) |
 | 2. LLM per-account synthesis (terminal cause + denial journey) | `src/claude_processor.py` | `data/categorized_output.csv` (one row per account) |
 | 3. Touch / balance / waste transform | `src/data_transformer.py` | in-memory dataframe |
-| 4. Streamlit dashboard | `app.py` | http://localhost:8501 |
+| 4. Streamlit dashboard | `rcm_home.py` (page) / `app.py` (multi-page entry) | http://localhost:8501 |
 
 For each account the LLM returns:
 - `LLM_Terminal_Root_Cause` - the current blocker (most recent note's category)
@@ -45,10 +45,39 @@ cp .env.example .env   # then add your ANTHROPIC_API_KEY
 ## Run
 
 ```bash
-# Dashboard against the committed data/categorized_output.csv
+# Multi-page dashboard (RCM Touch-Count + Physician AR Synthesizer)
 streamlit run app.py
+
+# Or just one page standalone
+streamlit run rcm_home.py
+streamlit run physician_poc/app.py
 
 # Re-run the pipeline end-to-end (requires requirements-dev.txt)
 python src/generate_pms_data.py
 python src/claude_processor.py
+```
+
+## Layout
+
+```
+app.py                    # multi-page entry (st.navigation)
+rcm_home.py               # page 1: synthetic-data POC
+physician_dashboard.py    # page 2: shim that calls physician_poc.app.render()
+
+src/                      # original POC pipeline (synthetic data)
+data/                     # synthetic_pms_extract.csv, categorized_output.csv
+
+physician_poc/            # second POC: real production-data event-sourced AR
+  src/
+    redact.py             # PHI scrubber (patient names, member IDs)
+    ingest.py             # events + notes timeline builder
+    claude_processor.py   # LLM journey synthesis (claude-haiku-4-5)
+    transform.py          # per-account features + cluster aggregation
+  data/
+    events_redacted.csv   # AR ledger
+    notes_redacted.csv    # biller notes
+    synthesized.csv       # LLM output (terminal cause, journey, anomaly flags)
+    accounts.csv          # per-account features
+    clusters.csv          # cluster aggregation
+  app.py                  # dashboard (run standalone or via root app.py)
 ```
