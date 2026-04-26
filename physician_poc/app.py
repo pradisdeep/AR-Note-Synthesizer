@@ -26,8 +26,8 @@ import plotly.graph_objects as go
 import streamlit as st
 
 ROOT = Path(__file__).resolve().parent
-ACCOUNTS_CSV = ROOT / "data" / "accounts.csv"
-CLUSTERS_CSV = ROOT / "data" / "clusters.csv"
+DEFAULT_ACCOUNTS_CSV = ROOT / "data" / "accounts.csv"
+DEFAULT_CLUSTERS_CSV = ROOT / "data" / "clusters.csv"
 
 # Anomaly flags worth highlighting individually in the prevalence chart.
 KNOWN_FLAGS = [
@@ -41,11 +41,10 @@ KNOWN_FLAGS = [
     "NO_HUMAN_TOUCH",
 ]
 
-st.set_page_config(
-    page_title="Physician AR Synthesizer",
-    page_icon=None,
-    layout="wide",
-)
+# Module-level set_page_config is intentionally NOT called here. When this
+# file is run standalone (`streamlit run physician_poc/app.py`), the
+# `__main__` guard below configures the page. When imported by the
+# multi-page entry (root-level app.py), the entry has already configured it.
 
 
 # --- Data loading ----------------------------------------------------------
@@ -202,7 +201,14 @@ def render_flag_prevalence(df: pd.DataFrame) -> go.Figure:
 # --- Main ------------------------------------------------------------------
 
 
-def main() -> None:
+def render(
+    accounts_csv: Path = DEFAULT_ACCOUNTS_CSV,
+    clusters_csv: Path = DEFAULT_CLUSTERS_CSV,
+) -> None:
+    """Render the physician AR dashboard. Used by both the standalone
+    `streamlit run physician_poc/app.py` entry and the multi-page
+    `pages/01_Physician_AR_Synthesizer.py` shim at the repo root.
+    """
     st.title("Physician AR Synthesizer")
     st.caption(
         "Per-account journey synthesis on event-sourced production AR data. "
@@ -211,16 +217,16 @@ def main() -> None:
         "and operational anomalies."
     )
 
-    if not ACCOUNTS_CSV.exists() or not CLUSTERS_CSV.exists():
+    if not accounts_csv.exists() or not clusters_csv.exists():
         st.error(
-            f"Missing `{ACCOUNTS_CSV.name}` or `{CLUSTERS_CSV.name}` under "
-            f"`{ACCOUNTS_CSV.parent.relative_to(ROOT.parent)}`. "
+            f"Missing `{accounts_csv.name}` or `{clusters_csv.name}` under "
+            f"`{accounts_csv.parent}`. "
             "Run `python physician_poc/src/transform.py` first."
         )
         st.stop()
 
-    accounts = load_accounts(ACCOUNTS_CSV)
-    clusters = load_clusters(CLUSTERS_CSV)
+    accounts = load_accounts(accounts_csv)
+    clusters = load_clusters(clusters_csv)
 
     # Sidebar
     st.sidebar.header("Filters")
@@ -389,4 +395,9 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main()
+    st.set_page_config(
+        page_title="Physician AR Synthesizer",
+        page_icon=None,
+        layout="wide",
+    )
+    render()
