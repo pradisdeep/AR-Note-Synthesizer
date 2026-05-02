@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.pytest_cache/
+
+# Virtual environments
+venv/
+.venv/
+
+# Local config
+.env
+
+# Pipeline artifacts
+output/
+*.tiff
+*.tif
+
+# OS
+.DS_Store
