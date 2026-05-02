@@ -8,8 +8,3 @@ venv/
 .DS_Store
 *.egg-info/
 .pytest_cache/
-
-# Synthetic chart generator outputs
-output/
-*.tiff
-*.tif
