@@ -19,9 +19,10 @@ ExtractedChart               — section-tagged Markdown + structured ICD/CPT ro
 ICD-10 + CPT with evidence
 ```
 
-This repo currently ships **Stages 2–3** plus an evaluation harness that scores
-extraction recall/precision against ground-truth codes from the synthetic chart
-generator.
+This repo currently ships **Stages 2–3 (extraction + normalization)** and
+**Stages 4–5 (chunking + LLM coding)** plus evaluation harnesses that score
+both stages independently against ground-truth codes from the synthetic chart
+generator. Validation, audit log, and orchestration (Phases C/D) are next.
 
 ## Layout
 
@@ -30,16 +31,27 @@ medcoding/
 ├── medcoding/
 │   ├── __init__.py
 │   ├── config.py              # env-driven settings (LM Studio URL, etc.)
-│   ├── models.py              # Page, Section, ExtractedChart, CodeRow
+│   ├── models.py              # Page, Section, ExtractedChart, CodeRow,
+│   │                          # CodeSuggestion, CodingResult
 │   ├── normalizer.py          # OCR text -> section-tagged Markdown
-│   └── extractors/
-│       ├── base.py            # Extractor protocol
-│       └── tesseract.py       # baseline OCR backend
+│   ├── chunker.py             # section-based chunking (ICD vs CPT relevant)
+│   ├── prompts.py             # ICD/CPT prompt templates
+│   ├── extractors/
+│   │   ├── base.py            # Extractor protocol
+│   │   └── tesseract.py       # baseline OCR backend
+│   └── coders/
+│       ├── base.py            # Coder protocol
+│       ├── lm_studio.py       # OpenAI-compatible client (LM Studio / vLLM)
+│       └── mock.py            # echo + scripted modes for tests/CI
 ├── scripts/
-│   ├── extract.py             # single TIFF -> Markdown (+ optional JSON)
-│   └── evaluate_extract.py    # batch eval against generator manifest.jsonl
+│   ├── extract.py             # TIFF -> Markdown (+ optional JSON)
+│   ├── evaluate_extract.py    # extraction-only eval against manifest.jsonl
+│   ├── code_chart.py          # TIFF -> ICD-10 + CPT codes (full pipeline)
+│   └── evaluate_coding.py     # end-to-end eval against manifest.jsonl
 ├── tests/
-│   └── test_normalizer.py
+│   ├── test_normalizer.py
+│   ├── test_chunker.py
+│   └── test_coders.py
 ├── requirements.txt
 └── README.md
 ```
@@ -85,6 +97,34 @@ python scripts/evaluate_extract.py \
 
 Reports per-chart predictions and aggregate ICD/CPT precision, recall, and F1.
 
+### Code a chart end-to-end
+
+Single chart through extraction + normalization + LLM coding:
+
+```bash
+# With LM Studio running (phi-4 loaded, server on http://localhost:1234)
+python scripts/code_chart.py path/to/chart.tiff
+
+# Without LM Studio — mock coder echoes the normalizer's table-parsed codes
+python scripts/code_chart.py path/to/chart.tiff --coder mock
+```
+
+Output is a CodingResult with per-code `(code, description, evidence_quote, confidence)`.
+
+### Evaluate end-to-end coding
+
+```bash
+# Mock coder (no LM Studio needed) — measures the deterministic baseline
+python scripts/evaluate_coding.py \
+    ../synthetic-chart-generator/output/small_charts/manifest.jsonl \
+    --coder mock --min-confidence 0
+
+# LM Studio coder — measures phi-4 lift over the deterministic baseline
+python scripts/evaluate_coding.py \
+    ../synthetic-chart-generator/output/small_charts/manifest.jsonl \
+    --coder lm_studio --min-confidence 0.5
+```
+
 ### Run unit tests
 
 ```bash
@@ -100,8 +140,13 @@ Environment variables (all optional):
 | `MEDCODING_EXTRACTOR` | `tesseract` | Backend name; resolved by `extractors/__init__.py`. |
 | `MEDCODING_OCR_DPI` | `300` | Rasterization DPI hint (currently informational). |
 | `MEDCODING_OCR_LANG` | `eng` | Tesseract language. |
-| `LM_STUDIO_BASE_URL` | `http://localhost:1234/v1` | LM Studio OpenAI-compatible endpoint (Phase B). |
-| `LM_STUDIO_MODEL` | `phi-4` | Model name registered in LM Studio. |
+| `MEDCODING_CODER` | `lm_studio` | Coder backend; `lm_studio` or `mock`. |
+| `LM_STUDIO_BASE_URL` | `http://localhost:1234/v1` | OpenAI-compatible endpoint (LM Studio, vLLM, etc.). |
+| `LM_STUDIO_MODEL` | `phi-4` | Model name registered with the server. |
+| `LM_STUDIO_API_KEY` | `lm-studio` | API key (LM Studio ignores it; required by the SDK). |
+| `LM_STUDIO_TEMPERATURE` | `0.0` | Coding wants deterministic output. |
+| `LM_STUDIO_MAX_TOKENS` | `2048` | Per-response cap. |
+| `LM_STUDIO_TIMEOUT_S` | `120` | Request timeout. CPU phi-4 is slow; budget accordingly. |
 | `MEDCODING_LOG_LEVEL` | `INFO` | stdlib logging level. |
 
 ## Production-portability notes
@@ -116,11 +161,27 @@ Environment variables (all optional):
 - **Config via env** — no hardcoded paths or hostnames. Same code runs
   locally, in Docker, or on Kubernetes by changing env vars.
 
+## Running with LM Studio (phi-4)
+
+1. Open LM Studio, **Server** tab, load `phi-4-Q4_K_M-GGUF`, click *Start*.
+2. Confirm the endpoint is reachable: `curl http://localhost:1234/v1/models`.
+3. Run the pipeline:
+   ```bash
+   export LM_STUDIO_MODEL="phi-4"   # or whatever the model id is in LM Studio
+   python scripts/code_chart.py path/to/chart.tiff
+   ```
+4. CPU inference of phi-4 14B is slow (~5–10 min per chart, two LLM calls per
+   chart — one for ICD, one for CPT). For evaluation runs use `--limit 3` until
+   you have a GPU.
+
 ## What's next
 
-- **Phase B:** `medcoding/coder.py` — chunk Markdown by section, send to
-  phi-4 via LM Studio, return structured `{code, description, evidence_quote, confidence}`.
 - **Phase C:** `medcoding/validator.py` — verify each predicted code exists,
   is billable, and pairs legally with linked codes; route low-confidence to a
-  human-review queue.
-- **Phase D:** orchestration (queue, retries, audit trail) once A–C are stable.
+  human-review queue. Reference data: `data/icd10_codes.csv` and
+  `data/cpt_codes.csv` from synthetic-chart-generator are a starting point.
+- **Phase D:** orchestration (queue, retries, audit trail, persistent storage)
+  once A–C are stable.
+- **Stronger extractor** for the heavily-degraded tier: drop in
+  `medcoding/extractors/paddle.py` or a VLM backend behind the same protocol —
+  no caller changes.

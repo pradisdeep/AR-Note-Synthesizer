@@ -8,7 +8,9 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 from datetime import datetime
-from typing import Optional
+from typing import Literal, Optional
+
+CodeType = Literal["ICD-10", "CPT"]
 
 
 @dataclass(frozen=True)
@@ -109,3 +111,33 @@ class ExtractedChart:
             if s.name == name:
                 return s
         return None
+
+
+@dataclass
+class CodeSuggestion:
+    """One LLM-produced code with provenance.
+
+    `evidence_quote` must be a verbatim span from the chart so reviewers can
+    audit the suggestion. `confidence` is the LLM's self-reported probability
+    on a 0-1 scale; downstream policy decides the rejection threshold.
+    """
+
+    code_type: CodeType
+    code: str
+    description: str
+    evidence_quote: str
+    confidence: float
+    source_section: str = ""
+
+
+@dataclass
+class CodingResult:
+    """Per-chart output of the coding stage."""
+
+    chart_source: str
+    coder: str
+    coded_at: datetime
+    icd_suggestions: list[CodeSuggestion] = field(default_factory=list)
+    cpt_suggestions: list[CodeSuggestion] = field(default_factory=list)
+    raw_responses: dict[str, str] = field(default_factory=dict)
+    coder_metadata: dict = field(default_factory=dict)

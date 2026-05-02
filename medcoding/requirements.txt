@@ -2,5 +2,5 @@ Pillow>=10.0.0
 pytesseract>=0.3.10
 pytest>=8.0.0
 
-# For Phase B (LM Studio coding) — uncomment when wiring up phi-4
-# openai>=1.30.0
+# Phase B: LM Studio (OpenAI-compatible) client for phi-4 coding
+openai>=1.30.0
