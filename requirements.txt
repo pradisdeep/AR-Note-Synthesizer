@@ -4,3 +4,10 @@ anthropic>=0.40.0
 streamlit>=1.30.0
 plotly>=5.18.0
 python-dotenv>=1.0.0
+
+# Synthetic clinical chart generator
+Pillow>=10.0.0
+reportlab>=4.0.0
+pdf2image>=1.17.0
+opencv-python>=4.9.0
+numpy>=1.26.0
