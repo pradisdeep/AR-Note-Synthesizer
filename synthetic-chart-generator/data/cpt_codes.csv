@@ -1,0 +1,34 @@
+code,description,category
+99202,Office or other outpatient visit new patient straightforward,E&M
+99203,Office or other outpatient visit new patient low complexity,E&M
+99204,Office or other outpatient visit new patient moderate complexity,E&M
+99205,Office or other outpatient visit new patient high complexity,E&M
+99212,Office visit established patient straightforward,E&M
+99213,Office visit established patient low complexity,E&M
+99214,Office visit established patient moderate complexity,E&M
+99215,Office visit established patient high complexity,E&M
+99221,Initial hospital care low complexity,E&M
+99223,Initial hospital care high complexity,E&M
+99232,Subsequent hospital care moderate complexity,E&M
+99238,Hospital discharge day management 30 minutes or less,E&M
+93000,Electrocardiogram routine ECG with at least 12 leads,Diagnostic
+93306,Echocardiography transthoracic real-time complete,Diagnostic
+71046,Radiologic examination chest 2 views,Radiology
+73610,Radiologic examination ankle complete minimum of 3 views,Radiology
+72148,MRI lumbar spine without contrast,Radiology
+74177,CT abdomen and pelvis with contrast,Radiology
+80053,Comprehensive metabolic panel,Laboratory
+85025,Complete CBC with automated differential WBC count,Laboratory
+83036,Hemoglobin A1C,Laboratory
+80061,Lipid panel,Laboratory
+84443,Thyroid stimulating hormone (TSH),Laboratory
+81003,Urinalysis automated without microscopy,Laboratory
+36415,Collection of venous blood by venipuncture,Laboratory
+90471,Immunization administration single vaccine,Procedure
+90686,Influenza virus vaccine quadrivalent split virus,Procedure
+20610,Arthrocentesis aspiration and/or injection major joint,Procedure
+11042,Debridement subcutaneous tissue first 20 sq cm or less,Procedure
+97110,Therapeutic exercises each 15 minutes,PT
+97140,Manual therapy techniques each 15 minutes,PT
+G0438,Annual wellness visit initial,Wellness
+G0439,Annual wellness visit subsequent,Wellness

@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.pytest_cache/
+
+# Virtual environments
+venv/
+.venv/
+
+# Generated artifacts
+output/
+*.tiff
+*.tif
+
+# OS
+.DS_Store
