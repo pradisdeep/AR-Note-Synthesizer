@@ -70,12 +70,19 @@ SECTION_NAMES = (
 
 @dataclass
 class Section:
-    """A logical section of a chart (HPI, ROS, Diagnoses, etc.)."""
+    """A logical section of a chart (HPI, ROS, Diagnoses, etc.).
+
+    `noise_classification` is set by the noise filter during normalization:
+    "relevant" / "noise" / "uncertain". Downstream stages (chunker, coder)
+    use this to decide whether to send the section to the LLM.
+    """
 
     name: str
     title: str
     text: str
     pages: list[int] = field(default_factory=list)
+    noise_classification: str = "relevant"
+    noise_reason: str = ""
 
 
 @dataclass

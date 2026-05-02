@@ -226,6 +226,36 @@ def build_pdf(chart: ChartData, pdf_path: Path) -> Path:
     for line in chart.assessment_plan:
         story.append(Paragraph(line, styles["body"]))
 
+    # Noise sections (orders / Rx / referrals): rendered as if they were
+    # legitimate chart content, since that's how they appear in real EHR
+    # exports. The medcoding pipeline must drop these before they reach
+    # the LLM coder.
+    for noise in chart.noise_sections:
+        story.append(Spacer(1, 6))
+        story.append(Paragraph(noise.header, styles["section"]))
+        if noise.kind == "orders_bulleted":
+            for row in noise.rows:
+                story.append(Paragraph(f"&bull; {row.bullet_text}", styles["body"]))
+        else:
+            data = [noise.columns] + [row.cells for row in noise.rows]
+            story.append(
+                Table(
+                    data,
+                    colWidths=[7.4 * inch / max(len(noise.columns), 1)] * max(len(noise.columns), 1),
+                    style=TableStyle(
+                        [
+                            ("FONTNAME", (0, 0), (-1, 0), "Helvetica-Bold"),
+                            ("FONTSIZE", (0, 0), (-1, -1), 8.5),
+                            ("BACKGROUND", (0, 0), (-1, 0), colors.HexColor("#f0e6d2")),
+                            ("GRID", (0, 0), (-1, -1), 0.4, colors.grey),
+                            ("VALIGN", (0, 0), (-1, -1), "TOP"),
+                            ("BOTTOMPADDING", (0, 0), (-1, -1), 3),
+                            ("TOPPADDING", (0, 0), (-1, -1), 3),
+                        ]
+                    ),
+                )
+            )
+
     # Addenda
     for addendum in chart.addenda:
         story.append(Spacer(1, 8))

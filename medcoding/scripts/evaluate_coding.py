@@ -84,6 +84,11 @@ def main() -> int:
         default=0.5,
         help="Drop predictions below this confidence before scoring (simulates human-review threshold).",
     )
+    parser.add_argument(
+        "--show-noise-dropped",
+        action="store_true",
+        help="Print which sections the noise filter dropped per chart (essential for debugging false positives).",
+    )
     parser.add_argument("-v", "--verbose", action="store_true")
     args = parser.parse_args()
 
@@ -112,6 +117,28 @@ def main() -> int:
             log.info("[%d] %s", i, tiff_path.name)
             pages = extractor.extract(tiff_path)
             chart = normalize(pages, source_path=tiff_path, extractor_name=extractor.name)
+
+            if args.show_noise_dropped:
+                dropped = [
+                    s for s in chart.sections if s.noise_classification == "noise"
+                ]
+                injected = record.get("noise_sections", [])
+                log.info(
+                    "  noise: injected=%d (headers=%s) dropped=%d (titles=%s)",
+                    len(injected),
+                    [n.get("header") for n in injected],
+                    len(dropped),
+                    [s.title for s in dropped],
+                )
+                uncertain = [
+                    s for s in chart.sections if s.noise_classification == "uncertain"
+                ]
+                if uncertain:
+                    log.info(
+                        "  uncertain (extend patterns?): %s",
+                        [s.title for s in uncertain],
+                    )
+
             result = coder.code(chart)
 
             icd_truth = {d["code"].upper() for d in record.get("diagnoses", [])}

@@ -18,6 +18,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from .models import CodeRow, ExtractedChart, Page, Section
+from .noise_filter import NoiseFilter
 
 log = logging.getLogger(__name__)
 
@@ -50,6 +51,27 @@ _SECTION_PATTERNS: list[tuple[str, str, re.Pattern[str]]] = [
      re.compile(r"^\s*insurance\s*$", re.I)),
     ("signature", "Signature",
      re.compile(r"^\s*(electronically\s+signed|signed\s+by)\b.*$", re.I)),
+    # Noise sections: detected here so they don't get glommed into a
+    # neighboring section's text. They're tagged `noise_*` and the noise
+    # filter / chunker drops them before phi-4 sees them.
+    ("noise_orders", "Orders",
+     re.compile(r"^\s*((provider|standing|outgoing)\s+)?orders?(\s+placed.*)?\s*$", re.I)),
+    ("noise_prescriptions", "Prescriptions",
+     re.compile(r"^\s*(rx|prescriptions?)(\s*/\s*(rx|prescriptions?))?\s*$", re.I)),
+    ("noise_referrals", "Referrals",
+     re.compile(r"^\s*referrals?\s*$", re.I)),
+    ("noise_lab_orders", "Lab Orders",
+     re.compile(r"^\s*lab(oratory)?\s+orders?\s*$", re.I)),
+    ("noise_imaging_orders", "Imaging Orders",
+     re.compile(r"^\s*imaging\s+orders?\s*$", re.I)),
+    ("noise_fax_cover", "Fax Cover",
+     re.compile(r"^\s*fax\s+cover.*$", re.I)),
+    ("noise_routing_slip", "Routing Slip",
+     re.compile(r"^\s*routing\s+slip\s*$", re.I)),
+    ("noise_patient_education", "Patient Education",
+     re.compile(r"^\s*patient\s+education.*$", re.I)),
+    ("noise_prior_auth", "Prior Authorization",
+     re.compile(r"^\s*prior\s+authoriz(ation|ations)?\s*$", re.I)),
 ]
 
 
@@ -138,6 +160,7 @@ def normalize(
     source_path: Path | str,
     extractor_name: str,
     extractor_metadata: dict | None = None,
+    noise_filter: NoiseFilter | None = None,
 ) -> ExtractedChart:
     """Group OCR lines into sections, pull code rows, render Markdown."""
 
@@ -180,19 +203,40 @@ def normalize(
             )
         )
 
+    # Apply noise filter — every section gets a `noise_classification` so
+    # the chunker can drop noise before the coder ever sees it.
+    nf = noise_filter or NoiseFilter()
+    for section in sections:
+        if section.name.startswith("noise_"):
+            # Already tagged at parse time; skip filter pass for clarity.
+            section.noise_classification = "noise"
+            section.noise_reason = "noise_section_name"
+        else:
+            classification = nf.classify(section)
+            section.noise_classification = classification.kind
+            section.noise_reason = (
+                f"{classification.reason}:{classification.matched_pattern}"
+                if classification.matched_pattern
+                else classification.reason
+            )
+
     page_of = _build_page_index(pages)
 
     # Code extraction: prefer the dedicated section, but fall back to a
-    # whole-document scan so we don't miss codes the section detector lost.
+    # scan of NON-noise sections so we don't pull code-shaped tokens out
+    # of order/Rx/referral tables (those produce false positives like
+    # interpreting drug-strength digits as CPTs).
     icd_section = next((s for s in sections if s.name == "diagnoses"), None)
     cpt_section = next((s for s in sections if s.name == "procedures"), None)
-    full_text = "\n".join(p.full_text for p in pages)
+    relevant_text = "\n".join(
+        s.text for s in sections if s.noise_classification != "noise"
+    )
 
     icd_rows = _extract_code_rows(
-        icd_section.text if icd_section else full_text, _ICD_CODE, page_of
+        icd_section.text if icd_section else relevant_text, _ICD_CODE, page_of
     )
     cpt_rows = _extract_code_rows(
-        cpt_section.text if cpt_section else full_text, _CPT_CODE, page_of
+        cpt_section.text if cpt_section else relevant_text, _CPT_CODE, page_of
     )
 
     markdown = _render_markdown(sections, icd_rows, cpt_rows)
@@ -221,7 +265,7 @@ def _render_markdown(
     so phi-4 sees a consistent layout across charts.
     """
 
-    by_name = {s.name: s for s in sections}
+    by_name = {s.name: s for s in sections if s.noise_classification != "noise"}
     canonical_order = [
         "header",
         "patient",

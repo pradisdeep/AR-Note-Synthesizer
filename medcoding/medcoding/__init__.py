@@ -15,10 +15,12 @@ from .models import (
     Section,
     TextBlock,
 )
+from .noise_filter import Classification, NoiseFilter
 from .normalizer import normalize
 
 __all__ = [
     "BoundingBox",
+    "Classification",
     "CodeRow",
     "CodeSuggestion",
     "CodeType",
@@ -26,6 +28,7 @@ __all__ = [
     "CodingResult",
     "Config",
     "ExtractedChart",
+    "NoiseFilter",
     "Page",
     "Section",
     "TextBlock",

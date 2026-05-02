@@ -77,6 +77,15 @@ def run(
                     kept = args.output_dir / f"{stem}.pdf"
                     kept.write_bytes(tmp_pdf.read_bytes())
 
+            noise_meta = [
+                {
+                    "profile": ns.profile_name,
+                    "header": ns.header,
+                    "kind": ns.kind,
+                    "row_count": len(ns.rows),
+                }
+                for ns in chart.noise_sections
+            ]
             manifest.write(
                 json.dumps(
                     {
@@ -87,6 +96,7 @@ def run(
                         "encounter_id": chart.encounter["encounter_id"],
                         "diagnoses": chart.diagnoses,
                         "procedures": chart.procedures,
+                        "noise_sections": noise_meta,
                         "profile": asdict(profile),
                     }
                 )

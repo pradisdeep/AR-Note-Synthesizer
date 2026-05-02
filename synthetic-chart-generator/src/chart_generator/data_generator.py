@@ -16,6 +16,8 @@ from typing import Any
 
 from faker import Faker
 
+from .noise_sections import NoiseSection, generate_noise_sections
+
 DATA_DIR = Path(__file__).resolve().parents[2] / "data"
 
 
@@ -36,6 +38,7 @@ class ChartData:
     medications: list[str]
     assessment_plan: list[str]
     addenda: list[dict[str, str]] = field(default_factory=list)
+    noise_sections: list[NoiseSection] = field(default_factory=list)
 
 
 def _load_csv_dict(path: Path) -> list[dict[str, str]]:
@@ -85,6 +88,7 @@ def generate_chart_data(
     n_procedures: int = 2,
     n_medications: int = 3,
     include_addendum: bool = False,
+    n_noise_sections: int = 0,
 ) -> ChartData:
     """Build a single synthetic chart payload.
 
@@ -198,6 +202,8 @@ def generate_chart_data(
             )
         )
 
+    noise_sections = generate_noise_sections(rng, count=n_noise_sections)
+
     addenda: list[dict[str, str]] = []
     if include_addendum:
         addenda.append(
@@ -234,4 +240,5 @@ def generate_chart_data(
         medications=medications,
         assessment_plan=assessment_plan,
         addenda=addenda,
+        noise_sections=noise_sections,
     )

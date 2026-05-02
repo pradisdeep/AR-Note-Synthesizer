@@ -21,6 +21,7 @@ def main() -> None:
             "n_procedures": 5,
             "n_medications": 8,
             "include_addendum": True,
+            "n_noise_sections": 3,
         },
         args=args,
     )

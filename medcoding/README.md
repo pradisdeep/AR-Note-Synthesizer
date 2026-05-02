@@ -12,9 +12,10 @@ TIFF (multi-page scan)
    ↓ [Stage 2] Extractor    (Tesseract OCR today; PaddleOCR / VLM via the same protocol)
 Page[]                       — text + bounding boxes per page
    ↓ [Stage 3] Normalizer    (heuristic section detection + code-row parsing)
+   ↓             ↳ NoiseFilter drops orders/Rx/referrals/forms before they reach the LLM
 ExtractedChart               — section-tagged Markdown + structured ICD/CPT rows
-   ↓ [Stage 4] Chunker       (Phase B — coming next)
-   ↓ [Stage 5] Coder         (Phase B — phi-4 via LM Studio)
+   ↓ [Stage 4] Chunker       (section-aware: ICD prompt sees diagnosis context, CPT prompt sees procedure context)
+   ↓ [Stage 5] Coder         (phi-4 via LM Studio, OpenAI-compatible)
    ↓ [Stage 6] Validator     (Phase C — code lookup + audit)
 ICD-10 + CPT with evidence
 ```
@@ -34,6 +35,7 @@ medcoding/
 │   ├── models.py              # Page, Section, ExtractedChart, CodeRow,
 │   │                          # CodeSuggestion, CodingResult
 │   ├── normalizer.py          # OCR text -> section-tagged Markdown
+│   ├── noise_filter.py        # drops orders / Rx / referrals / forms
 │   ├── chunker.py             # section-based chunking (ICD vs CPT relevant)
 │   ├── prompts.py             # ICD/CPT prompt templates
 │   ├── extractors/
@@ -51,7 +53,8 @@ medcoding/
 ├── tests/
 │   ├── test_normalizer.py
 │   ├── test_chunker.py
-│   └── test_coders.py
+│   ├── test_coders.py
+│   └── test_noise_filter.py
 ├── requirements.txt
 └── README.md
 ```
@@ -173,6 +176,41 @@ Environment variables (all optional):
 4. CPU inference of phi-4 14B is slow (~5–10 min per chart, two LLM calls per
    chart — one for ICD, one for CPT). For evaluation runs use `--limit 3` until
    you have a GPU.
+
+## Noise filtering
+
+Real-world charts contain a lot of content that is not coding evidence:
+order tables, prescriptions, referrals, fax cover sheets, registration
+forms, prior-auth requests, etc. ICD coding rules forbid coding suspected
+or planned conditions; CPT requires services rendered, not ordered.
+Letting these sections reach the LLM causes both compliance failures and
+accuracy drops.
+
+`medcoding/noise_filter.py` runs three layered checks per section:
+
+1. **Header pattern** (fast, deterministic, configurable per-EHR).
+   Recognizes `ORDERS`, `PROVIDER ORDERS`, `RX`, `PRESCRIPTIONS`,
+   `REFERRALS`, `LAB ORDER`, `IMAGING ORDER`, `FAX COVER`,
+   `PATIENT EDUCATION`, `PRIOR AUTHORIZATION`, etc.
+2. **Table-structure heuristic.** Looks for column-header tokens
+   (`Status`, `Pending`, `Sent`, `Refills`, `Pharmacy`) and order-status
+   density even when the section's name didn't match a known pattern.
+3. **Content-pattern density.** Last-line-of-defense regex scan for
+   `Send to:`, `Refer to:`, `Order:`, `Authorized by:`, etc. If more than
+   30% of lines match, the section is dropped.
+
+A separate **whitelist** in `chunker.py` enforces that only known
+clinical sections (HPI, ROS, PE, A&P, Plan, Addendum, etc.) make it
+into the LLM prompt — even if all three filter checks fail.
+
+Sections marked `uncertain` (no check fired but the name is non-canonical)
+are logged so the patterns can be extended for new EHRs without silently
+dropping clinical content.
+
+The synthetic chart generator now injects provider-variant noise sections
+into medium tier (1 per chart) and complex tier (3 per chart). The
+manifest records what was injected, so you can verify the filter is
+working with `python scripts/evaluate_coding.py manifest.jsonl --show-noise-dropped`.
 
 ## What's next
 

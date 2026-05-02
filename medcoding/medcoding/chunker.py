@@ -57,7 +57,11 @@ class CodingChunk:
 
 
 def _render_sections(chart: ExtractedChart, names: tuple[str, ...]) -> tuple[str, list[str]]:
-    """Render the requested sections as Markdown in canonical order."""
+    """Render the requested sections as Markdown in canonical order.
+
+    Skips any section flagged as noise by the normalizer / NoiseFilter —
+    that's the final guard ensuring orders/Rx/referrals never reach the LLM.
+    """
 
     by_name: dict[str, Section] = {s.name: s for s in chart.sections}
     parts: list[str] = []
@@ -65,6 +69,8 @@ def _render_sections(chart: ExtractedChart, names: tuple[str, ...]) -> tuple[str
     for name in names:
         section = by_name.get(name)
         if not section or not section.text.strip():
+            continue
+        if section.noise_classification == "noise":
             continue
         parts.append(f"## {section.title}\n{section.text.strip()}")
         included.append(name)
